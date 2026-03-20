@@ -433,14 +433,8 @@ h3 {
 }
 
 .skills-orb__mesh line {
-  stroke: rgba(255, 111, 44, 0.16);
-  stroke-width: 1;
-}
-
-.skills-orb__mesh ellipse {
-  fill: none;
-  stroke: rgba(255, 111, 44, 0.18);
-  stroke-width: 1;
+  stroke: rgba(255, 111, 44, 0.2);
+  stroke-width: 0.8;
 }
 
 .skill-node {
@@ -458,9 +452,9 @@ h3 {
   color: var(--text);
   opacity: var(--skill-opacity);
   transition:
-    transform 0.26s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.22s ease,
-    filter 0.22s ease;
+    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s ease,
+    filter 0.3s ease;
   text-align: center;
   will-change: transform, opacity;
 }

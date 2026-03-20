@@ -50,14 +50,29 @@ function rotatePoint(point: Point3D, rx: number, ry: number): Point3D {
   return { x: x1, y: y2, z: z2 };
 }
 
+function buildMeshPoints(count: number): Point3D[] {
+  return Array.from({ length: count }, (_, index) => {
+    const t = count === 1 ? 0 : index / (count - 1);
+    const y = 1 - t * 2;
+    const radius = Math.sqrt(1 - y * y);
+    const theta = goldenAngle * index * 1.35;
+
+    return {
+      x: Math.cos(theta) * radius,
+      y,
+      z: Math.sin(theta) * radius,
+    };
+  });
+}
+
 export function SkillsUniverse({ skills }: SkillsUniverseProps) {
   const dragState = useRef({
     isDragging: false,
     activePointerId: -1,
     lastX: 0,
     lastY: 0,
-    targetVelocityX: 0.0011,
-    targetVelocityY: -0.0007,
+    targetVelocityX: 0.00035,
+    targetVelocityY: -0.00022,
     targetRotationX: -0.4,
     targetRotationY: 0.55,
     rotationX: -0.4,
@@ -68,6 +83,7 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
   const [rotation, setRotation] = useState({ x: -0.4, y: 0.55 });
 
   const basePoints = useMemo(() => buildSpherePoints(skills.length), [skills.length]);
+  const meshPoints = useMemo(() => buildMeshPoints(36), []);
 
   useEffect(() => {
     const animate = () => {
@@ -75,20 +91,20 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
       if (!state.isDragging) {
         state.targetRotationX += state.targetVelocityY;
         state.targetRotationY += state.targetVelocityX;
-        state.targetVelocityX *= 0.992;
-        state.targetVelocityY *= 0.992;
+        state.targetVelocityX *= 0.994;
+        state.targetVelocityY *= 0.994;
 
-        if (Math.abs(state.targetVelocityX) < 0.00028) {
-          state.targetVelocityX = 0.00028;
+        if (Math.abs(state.targetVelocityX) < 0.00008) {
+          state.targetVelocityX = 0.00008;
         }
 
-        if (Math.abs(state.targetVelocityY) < 0.00016) {
-          state.targetVelocityY = -0.00016;
+        if (Math.abs(state.targetVelocityY) < 0.00005) {
+          state.targetVelocityY = -0.00005;
         }
       }
 
-      state.rotationX += (state.targetRotationX - state.rotationX) * 0.08;
-      state.rotationY += (state.targetRotationY - state.rotationY) * 0.08;
+      state.rotationX += (state.targetRotationX - state.rotationX) * 0.055;
+      state.rotationY += (state.targetRotationY - state.rotationY) * 0.055;
 
       setRotation({
         x: state.rotationX,
@@ -175,6 +191,29 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
     })
     .sort((a, b) => a.z - b.z);
 
+  const projectedMeshPoints = meshPoints.map((point) => {
+    const rotated = rotatePoint(point, rotation.x, rotation.y);
+    return {
+      x: 500 + rotated.x * 235,
+      y: 380 + rotated.y * 185,
+      z: rotated.z,
+    };
+  });
+
+  const meshLines: Array<[typeof projectedMeshPoints[number], typeof projectedMeshPoints[number]]> = [];
+  for (let i = 0; i < projectedMeshPoints.length; i += 1) {
+    for (let j = i + 1; j < projectedMeshPoints.length; j += 1) {
+      const a = projectedMeshPoints[i];
+      const b = projectedMeshPoints[j];
+      const dx = a.x - b.x;
+      const dy = a.y - b.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      if (distance < 180) {
+        meshLines.push([a, b]);
+      }
+    }
+  }
+
   return (
     <section className="skills-universe terminal-panel">
       <div className="skills-universe__header">
@@ -210,15 +249,18 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
           <div className="skills-orb__glow" />
           <div className="skills-orb__core" />
           <svg className="skills-orb__mesh" viewBox="0 0 1000 760" preserveAspectRatio="none">
-            <g transform={`rotate(${rotation.y * 18} 500 380)`}>
-              <ellipse cx="500" cy="380" rx="250" ry="180" />
-              <ellipse cx="500" cy="380" rx="250" ry="112" />
-              <ellipse cx="500" cy="380" rx="250" ry="54" />
-            </g>
-            <g transform={`rotate(${rotation.x * 22} 500 380)`}>
-              <ellipse cx="500" cy="380" rx="96" ry="250" />
-              <ellipse cx="500" cy="380" rx="166" ry="250" />
-            </g>
+            {meshLines.map(([start, end], index) => (
+              <line
+                key={index}
+                x1={start.x}
+                y1={start.y}
+                x2={end.x}
+                y2={end.y}
+                style={{
+                  opacity: Math.max(0.06, ((start.z + end.z + 2) / 4) * 0.42),
+                }}
+              />
+            ))}
           </svg>
 
           {projectedSkills.map((skill, index) => {
