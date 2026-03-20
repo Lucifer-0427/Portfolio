@@ -1,8 +1,8 @@
 :root {
   --bg: #141414;
   --bg-2: #1b1b1b;
-  --panel: rgba(26, 26, 26, 0.95);
-  --panel-soft: rgba(31, 31, 31, 0.95);
+  --panel: rgba(26, 26, 26, 0.72);
+  --panel-soft: rgba(31, 31, 31, 0.72);
   --text: #e9e7e3;
   --muted: #a7a19a;
   --line: rgba(255, 111, 44, 0.22);
@@ -10,7 +10,7 @@
   --accent: #ff6f2c;
   --accent-strong: #ff8f5b;
   --green: #4fe27f;
-  --shadow: 0 22px 60px rgba(0, 0, 0, 0.34);
+  --shadow: 0 22px 60px rgba(0, 0, 0, 0.28);
 }
 
 * {
@@ -39,6 +39,12 @@ a {
   text-decoration: none;
 }
 
+.vanta-clouds {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+}
+
 .portfolio-shell,
 .subpage-shell,
 .site-footer {
@@ -60,39 +66,33 @@ a {
   padding: 1.8rem 0 3rem;
 }
 
-.terminal-theme {
-  isolation: isolate;
+.portfolio-shell::before,
+.subpage-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(20, 20, 20, 0.22) 0%, rgba(20, 20, 20, 0.44) 52%, rgba(20, 20, 20, 0.74) 100%);
+  pointer-events: none;
 }
 
+.glass-panel,
 .terminal-panel {
   border: 1px solid var(--line);
   border-radius: 22px;
   background: var(--panel);
+  backdrop-filter: blur(16px);
   box-shadow: var(--shadow);
 }
 
-.terminal-nav {
+.portfolio-nav {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
   align-items: center;
-  padding: 0.9rem 1.1rem;
+  padding: 0.95rem 1.1rem;
   margin-bottom: 1.2rem;
-}
-
-.identity-block {
-  display: flex;
-  gap: 0.85rem;
-  align-items: center;
-}
-
-.avatar-dot {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 999px;
-  background: linear-gradient(135deg, var(--accent), #4b1d08);
-  border: 2px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 0 0 4px rgba(255, 111, 44, 0.08);
 }
 
 .brand-lockup,
@@ -123,64 +123,35 @@ a {
   font-size: 0.95rem;
 }
 
-.hero-terminal,
+.hero-clean,
 .project-grid,
 .closing-grid,
 .featured-case-study,
 .resume-layout,
-.stack-grid,
 .metrics-row {
   display: grid;
   gap: 1.2rem;
 }
 
-.hero-terminal {
-  grid-template-columns: 1.25fr 0.85fr;
+.hero-clean {
+  grid-template-columns: 1.2fr 0.8fr;
   align-items: start;
+  margin-bottom: 1.2rem;
 }
 
-.assistant-column,
-.dashboard-column {
+.hero-copy,
+.hero-side {
   display: grid;
-  gap: 1.2rem;
+  gap: 1rem;
 }
 
-.assistant-card,
-.feature-module,
-.mini-module,
-.project-card,
-.quote-card,
-.contact-card,
-.subpage-hero,
-.featured-case-study__main,
-.live-demo-card,
-.resume-card {
-  padding: 1.4rem;
-}
-
-.terminal-bar {
-  display: flex;
-  gap: 0.6rem;
-  margin-bottom: 1rem;
-}
-
-.terminal-pill {
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 999px;
-  padding: 0.35rem 0.7rem;
-  color: var(--muted);
-  font-size: 0.82rem;
-  font-weight: 700;
-}
-
-.terminal-pill.active {
-  color: var(--accent-strong);
-  border-color: var(--line);
-  background: rgba(255, 111, 44, 0.08);
+.hero-copy {
+  padding: 1.2rem 0.2rem;
 }
 
 .terminal-label,
-.project-label {
+.project-label,
+.metric-console__label {
   color: var(--accent-strong);
   font-size: 0.86rem;
   font-weight: 800;
@@ -218,47 +189,20 @@ h3 {
 .quote-card p,
 .live-demo-card p,
 .resume-card p,
-.metric-console p,
-.feature-module p {
+.metric-console p {
   color: var(--muted);
   line-height: 1.8;
 }
 
-.lede,
-.section-copy {
-  margin-top: 1rem;
-}
-
-.terminal-list {
-  margin-top: 1.2rem;
-  padding: 1rem 1.1rem;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 18px;
-  background: var(--panel-soft);
-}
-
-.terminal-section-title {
-  color: var(--accent-strong);
-  font-weight: 800;
-}
-
-.terminal-list ol {
-  margin-top: 0.85rem;
-  padding-left: 1.35rem;
-  color: var(--text);
-  line-height: 1.9;
-}
-
 .hero-actions,
-.social-links,
-.status-row {
+.social-links {
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
 }
 
 .hero-actions {
-  margin-top: 1.25rem;
+  margin-top: 0.4rem;
 }
 
 .primary-link,
@@ -284,11 +228,9 @@ h3 {
 .primary-link:hover,
 .secondary-link:hover,
 .project-card:hover,
-.assistant-card:hover,
-.feature-module:hover,
-.mini-module:hover,
 .quote-card:hover,
-.contact-card:hover {
+.contact-card:hover,
+.metric-console:hover {
   transform: translateY(-3px);
 }
 
@@ -304,35 +246,31 @@ h3 {
   border-color: rgba(79, 226, 127, 0.24);
 }
 
-.metrics-row {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.hero-side {
+  grid-template-columns: 1fr;
 }
 
-.metric-console {
-  padding: 1rem 1.1rem;
-}
-
-.metric-console__label {
-  color: var(--accent-strong);
-  font-size: 0.8rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+.metric-console,
+.project-card,
+.quote-card,
+.contact-card,
+.subpage-hero,
+.featured-case-study__main,
+.live-demo-card,
+.resume-card,
+.section-heading {
+  padding: 1.35rem;
 }
 
 .metric-console strong {
   display: block;
   margin-top: 0.6rem;
   font-family: var(--font-display), monospace;
-  font-size: 1.55rem;
+  font-size: 1.45rem;
 }
 
 .metric-console p {
   margin-top: 0.55rem;
-}
-
-.stack-grid {
-  grid-template-columns: 1fr;
 }
 
 .projects-section {
@@ -510,7 +448,6 @@ h3 {
 }
 
 .section-heading {
-  padding: 1.35rem;
   margin-bottom: 1.1rem;
 }
 
@@ -605,12 +542,11 @@ h3 {
 }
 
 @media (max-width: 1060px) {
-  .hero-terminal,
+  .hero-clean,
   .project-grid,
   .closing-grid,
   .featured-case-study,
-  .resume-layout,
-  .metrics-row {
+  .resume-layout {
     grid-template-columns: 1fr;
   }
 
@@ -651,7 +587,7 @@ h3 {
     padding-top: 1rem;
   }
 
-  .terminal-nav {
+  .portfolio-nav {
     flex-direction: column;
     align-items: flex-start;
   }
