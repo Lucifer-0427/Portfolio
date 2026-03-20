@@ -305,123 +305,17 @@ h3 {
   overscroll-behavior: contain;
 }
 
-.skills-orb-stage:active {
+.skills-orb-stage:active,
+.skills-orb-stage.is-dragging {
   cursor: grabbing;
 }
 
-.skills-orb {
-  position: relative;
-  width: 100%;
-  min-height: 48rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.skills-orb__glow,
-.skills-orb__core {
-  position: absolute;
-  border-radius: 999px;
-}
-
-.skills-orb__glow {
-  width: 36rem;
-  height: 36rem;
-  background: radial-gradient(circle, rgba(104, 211, 255, 0.09), transparent 66%);
-  filter: blur(8px);
-}
-
-.skills-orb__core {
-  width: 33rem;
-  height: 33rem;
-  border: 1px solid rgba(104, 211, 255, 0.2);
-  box-shadow:
-    inset 0 0 0 1px rgba(104, 211, 255, 0.08),
-    0 0 40px rgba(104, 211, 255, 0.08);
-}
-
-.skills-orb__core::before,
-.skills-orb__core::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 999px;
-  border: 1px solid rgba(104, 211, 255, 0.1);
-}
-
-.skills-orb__core::before {
-  transform: rotate(32deg);
-}
-
-.skills-orb__core::after {
-  transform: rotate(-28deg);
-}
-
-.skills-orb__mesh {
-  position: absolute;
-  inset: 0;
+.skills-orb-canvas {
+  display: block;
   width: 100%;
   height: 100%;
-}
-
-.skills-orb__mesh line {
-  stroke: rgba(104, 211, 255, 0.18);
-  stroke-width: 0.8;
-}
-
-.skill-node {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform:
-    translate3d(calc(-50% + var(--skill-x)), calc(-50% + var(--skill-y)), 0)
-    scale(var(--skill-scale));
-  min-width: 4rem;
-  padding: 0.3rem;
-  border: 0;
-  border-radius: 16px;
-  background: transparent;
-  color: var(--text);
-  opacity: var(--skill-opacity);
-  transition:
-    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.3s ease,
-    filter 0.3s ease;
-  text-align: center;
-  will-change: transform, opacity;
-}
-
-.skill-node:hover,
-.skill-node:focus-visible,
-.skill-node--active {
-  transform:
-    translate3d(calc(-50% + var(--skill-x)), calc(-50% + var(--skill-y)), 0)
-    scale(calc(var(--skill-scale) + 0.24));
-  filter: drop-shadow(0 0 18px color-mix(in srgb, var(--skill-accent) 40%, transparent));
-  z-index: 2;
-}
-
-.skill-node__icon {
-  width: 4.8rem;
-  height: 4.8rem;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-}
-
-.skill-node__label {
-  display: block;
-  margin-top: 0.2rem;
-  font-weight: 800;
-  color: var(--text);
-  font-size: 0.82rem;
-}
-
-.skill-node__category {
-  display: block;
-  margin-top: 0.2rem;
-  font-size: 0.66rem;
-  color: var(--muted);
+  min-height: inherit;
+  border-radius: inherit;
 }
 
 .skills-orb-caption {
@@ -566,18 +460,8 @@ h3 {
   }
 
   .skills-orb-stage,
-  .skills-orb {
+  .skills-orb-canvas {
     min-height: 38rem;
-  }
-
-  .skills-orb__glow {
-    width: 27rem;
-    height: 27rem;
-  }
-
-  .skills-orb__core {
-    width: 25rem;
-    height: 25rem;
   }
 }
 
@@ -606,31 +490,8 @@ h3 {
   }
 
   .skills-orb-stage,
-  .skills-orb {
+  .skills-orb-canvas {
     min-height: 30rem;
-  }
-
-  .skills-orb__glow {
-    width: 21rem;
-    height: 21rem;
-  }
-
-  .skills-orb__core {
-    width: 19.5rem;
-    height: 19.5rem;
-  }
-
-  .skill-node__icon {
-    width: 3.5rem;
-    height: 3.5rem;
-  }
-
-  .skill-node__label {
-    font-size: 0.72rem;
-  }
-
-  .skill-node__category {
-    display: none;
   }
 
   .skills-orb-caption {
