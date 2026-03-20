@@ -9,6 +9,23 @@ export const strengths = [
   "ASP.NET Core MVC, debugging, and project delivery",
 ];
 
+export const skillsUniverse = [
+  { label: "C#", category: "Language", accent: "#845ef7" },
+  { label: "JavaScript", category: "Language", accent: "#ffd43b" },
+  { label: "HTML", category: "Frontend", accent: "#ff6f2c" },
+  { label: "CSS", category: "Frontend", accent: "#4dabf7" },
+  { label: "SQL", category: "Database", accent: "#63e6be" },
+  { label: "ASP.NET", category: "Backend", accent: "#9775fa" },
+  { label: "MVC", category: "Architecture", accent: "#ffa94d" },
+  { label: "MonoGame", category: "Framework", accent: "#74c0fc" },
+  { label: "Git", category: "Version Control", accent: "#ff8787" },
+  { label: "GitHub", category: "Collaboration", accent: "#f8f9fa" },
+  { label: "MySQL", category: "Database", accent: "#4dd4ac" },
+  { label: "Windows", category: "Platform", accent: "#91a7ff" },
+  { label: "Debugging", category: "Workflow", accent: "#ff922b" },
+  { label: "Troubleshooting", category: "Support", accent: "#69db7c" },
+];
+
 export const projects = [
   {
     title: "ResolveIT Help Desk Ticketing System",

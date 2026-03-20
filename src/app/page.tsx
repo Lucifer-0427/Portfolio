@@ -1,10 +1,11 @@
 import Link from "next/link";
+import { SkillsUniverse } from "@/components/skills-universe";
 import {
   focusAreas,
   githubUrl,
   linkedInUrl,
   projects,
-  strengths,
+  skillsUniverse,
   targets,
 } from "@/lib/site-data";
 
@@ -125,15 +126,6 @@ export default function Home() {
 
             <div className="stack-grid">
               <article className="mini-module terminal-panel">
-                <p className="terminal-label">{"// Skills"}</p>
-                <ul className="bullet-list">
-                  {strengths.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </article>
-
-              <article className="mini-module terminal-panel">
                 <p className="terminal-label">{"// Target roles"}</p>
                 <ul className="bullet-list">
                   {targets.map((item) => (
@@ -144,6 +136,8 @@ export default function Home() {
             </div>
           </aside>
         </section>
+
+        <SkillsUniverse skills={skillsUniverse} />
 
         <section className="projects-section">
           <div className="section-heading terminal-panel">

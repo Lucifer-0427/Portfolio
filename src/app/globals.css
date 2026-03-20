@@ -339,6 +339,172 @@ h3 {
   margin-top: 1.3rem;
 }
 
+.skills-universe {
+  margin-top: 1.3rem;
+  padding: 1.4rem;
+}
+
+.skills-universe__header,
+.skills-universe__footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
+.skills-universe__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: flex-end;
+}
+
+.skills-orb-stage {
+  position: relative;
+  margin-top: 1.2rem;
+  min-height: 38rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at center, rgba(255, 111, 44, 0.06), transparent 38%),
+    rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+  cursor: grab;
+}
+
+.skills-orb-stage:active {
+  cursor: grabbing;
+}
+
+.skills-orb {
+  position: relative;
+  width: 100%;
+  min-height: 38rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skills-orb__glow,
+.skills-orb__core {
+  position: absolute;
+  border-radius: 999px;
+}
+
+.skills-orb__glow {
+  width: 28rem;
+  height: 28rem;
+  background: radial-gradient(circle, rgba(255, 111, 44, 0.12), transparent 66%);
+  filter: blur(8px);
+}
+
+.skills-orb__core {
+  width: 26rem;
+  height: 26rem;
+  border: 1px solid rgba(255, 111, 44, 0.2);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 111, 44, 0.08),
+    0 0 40px rgba(255, 111, 44, 0.08);
+}
+
+.skills-orb__core::before,
+.skills-orb__core::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 111, 44, 0.1);
+}
+
+.skills-orb__core::before {
+  transform: rotate(32deg);
+}
+
+.skills-orb__core::after {
+  transform: rotate(-28deg);
+}
+
+.skill-node {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform:
+    translate(calc(-50% + var(--skill-x)), calc(-50% + var(--skill-y)))
+    scale(var(--skill-scale));
+  min-width: 6.4rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(20, 20, 20, 0.94);
+  color: var(--text);
+  opacity: var(--skill-opacity);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  transition:
+    transform 0.18s ease,
+    opacity 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+  text-align: left;
+}
+
+.skill-node::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 14px;
+  border: 1px solid var(--skill-accent);
+  opacity: 0.26;
+  pointer-events: none;
+}
+
+.skill-node:hover,
+.skill-node:focus-visible,
+.skill-node--active {
+  border-color: var(--skill-accent);
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.4);
+  transform:
+    translate(calc(-50% + var(--skill-x)), calc(-50% + var(--skill-y)))
+    scale(calc(var(--skill-scale) + 0.15));
+  z-index: 2;
+}
+
+.skill-node__label {
+  display: block;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.skill-node__category {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.73rem;
+  color: var(--muted);
+}
+
+.skills-orb-caption {
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.skills-orb-caption span,
+.skills-universe__focus {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--muted);
+  padding: 0.6rem 1rem;
+}
+
+.skills-universe__focus strong {
+  color: var(--accent-strong);
+}
+
 .section-heading {
   padding: 1.35rem;
   margin-bottom: 1.1rem;
@@ -450,6 +616,12 @@ h3 {
 
   .site-footer__inner span {
     text-align: left;
+  }
+
+  .skills-universe__header,
+  .skills-universe__footer {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
