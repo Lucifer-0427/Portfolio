@@ -37,6 +37,34 @@ a {
   text-decoration: none;
 }
 
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.6rem 0 1rem;
+}
+
+.brand-lockup {
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.top-nav__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  align-items: center;
+}
+
+.top-nav__links a {
+  color: var(--navy);
+  font-weight: 700;
+}
+
 .portfolio-shell,
 .site-footer {
   position: relative;
@@ -366,6 +394,52 @@ h1 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.feature-demo-card,
+.subpage-hero,
+.featured-case-study,
+.resume-layout {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.feature-demo-card {
+  margin-top: 1.5rem;
+  padding: 1.55rem;
+  border: 1px solid var(--line);
+  border-radius: 32px;
+  background: rgba(255, 250, 243, 0.74);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+}
+
+.feature-demo-card h3,
+.live-demo-card h2,
+.resume-card h2 {
+  font-family: var(--font-display), sans-serif;
+  font-size: 2rem;
+  line-height: 0.98;
+}
+
+.feature-demo-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.status-pill,
+.social-placeholder {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.75rem 1rem;
+  background: rgba(23, 95, 103, 0.12);
+  color: var(--teal);
+  font-weight: 800;
+}
+
 .project-card {
   padding: 1.55rem;
   min-height: 26rem;
@@ -434,6 +508,56 @@ h1 {
   border-bottom: 1px solid rgba(23, 37, 51, 0.15);
 }
 
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 0.6rem;
+}
+
+.social-links a {
+  font-weight: 800;
+}
+
+.subpage-shell {
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2rem 0 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.subpage-hero {
+  max-width: 56rem;
+  margin-bottom: 1.7rem;
+}
+
+.featured-case-study {
+  grid-template-columns: 1.2fr 0.8fr;
+  margin-bottom: 1.7rem;
+}
+
+.featured-case-study__main,
+.live-demo-card,
+.resume-card {
+  padding: 1.6rem;
+}
+
+.resume-layout {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.resume-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.resume-card a {
+  width: fit-content;
+  font-weight: 800;
+}
+
 .site-footer {
   padding: 0 0 2.4rem;
 }
@@ -480,7 +604,10 @@ h1 {
   .summary-grid,
   .project-grid,
   .closing-grid,
-  .site-footer__inner {
+  .site-footer__inner,
+  .feature-demo-card,
+  .featured-case-study,
+  .resume-layout {
     grid-template-columns: 1fr;
   }
 
@@ -503,8 +630,18 @@ h1 {
     padding-top: 1rem;
   }
 
+  .subpage-shell {
+    width: min(100% - 1rem, 100%);
+    padding-top: 1rem;
+  }
+
   .hero-copy {
     padding-right: 0;
+  }
+
+  .top-nav {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   h1 {

@@ -1,67 +1,38 @@
+import Link from "next/link";
 import { VantaClouds } from "@/components/vanta-clouds";
-
-const strengths = [
-  "Troubleshooting and technical problem solving",
-  "Windows environment familiarity",
-  "C#, JavaScript, HTML, CSS, and SQL",
-  "ASP.NET Core MVC, debugging, and project delivery",
-];
-
-const projects = [
-  {
-    title: "ResolveIT Help Desk Ticketing System",
-    label: "Support Systems",
-    summary:
-      "A service desk dashboard designed around real internal IT workflow, from intake and triage to status tracking and resolution.",
-    stack: "ASP.NET Core MVC, C#, Razor, custom CSS",
-    highlights: [
-      "Built a ticket flow with categories, priorities, service snapshots, and practical issue states.",
-      "Modeled realistic requests like VPN instability, password resets, and device support incidents.",
-    ],
-  },
-  {
-    title: "Supermarket Website with Dynamic Pricing",
-    label: "Business Logic",
-    summary:
-      "A retail-focused website that adapts product pricing through business rules, showing practical problem solving beyond static web pages.",
-    stack: "JavaScript, HTML, CSS, web logic design",
-    highlights: [
-      "Focused on conditional pricing behavior and product management scenarios.",
-      "Strengthened full-stack thinking, testing habits, and logic design under real-world style constraints.",
-    ],
-  },
-  {
-    title: "Space Fighter Game",
-    label: "Programming Depth",
-    summary:
-      "A fast-paced C# game project that demonstrates event-driven programming, gameplay systems, and iterative debugging.",
-    stack: "C#, MonoGame, collision systems, gameplay loops",
-    highlights: [
-      "Implemented movement, enemy behavior, collision handling, and score tracking.",
-      "Used repeated testing and debugging to improve responsiveness, logic, and game feel.",
-    ],
-  },
-];
-
-const targets = [
-  "IT Support Specialist",
-  "Help Desk Technician",
-  "Service Desk Analyst",
-  "Technical Support Representative",
-];
-
-const focusAreas = [
-  "Support workflow thinking",
-  "Debugging and issue triage",
-  "Clear, user-friendly interfaces",
-  "Practical C# project work",
-];
+import {
+  focusAreas,
+  githubUrl,
+  linkedInUrl,
+  projects,
+  strengths,
+  targets,
+} from "@/lib/site-data";
 
 export default function Home() {
   return (
     <>
       <main className="portfolio-shell">
         <VantaClouds />
+        <header className="top-nav">
+          <Link href="/" className="brand-lockup">
+            Harsh Panchal
+          </Link>
+          <nav className="top-nav__links">
+            <Link href="/projects">Projects</Link>
+            <Link href="/resume">Resume</Link>
+            <a href={githubUrl} target="_blank" rel="noreferrer">
+              GitHub
+            </a>
+            {linkedInUrl ? (
+              <a href={linkedInUrl} target="_blank" rel="noreferrer">
+                LinkedIn
+              </a>
+            ) : (
+              <a href="#contact">LinkedIn</a>
+            )}
+          </nav>
+        </header>
 
         <section className="hero">
           <div className="hero-copy">
@@ -75,9 +46,12 @@ export default function Home() {
             </p>
 
             <div className="hero-actions">
-              <a href="#projects" className="primary-link">
+              <Link href="/projects" className="primary-link">
                 Explore Projects
-              </a>
+              </Link>
+              <Link href="/resume" className="secondary-link">
+                Resume
+              </Link>
               <a href="#contact" className="secondary-link">
                 Contact Me
               </a>
@@ -170,6 +144,24 @@ export default function Home() {
               </article>
             ))}
           </div>
+
+          <div className="feature-demo-card">
+            <div>
+              <p className="section-tag">Help Desk Demo</p>
+              <h3>ResolveIT is the project closest to real service desk work.</h3>
+              <p className="section-copy">
+                This featured project is set up as the strongest case study in
+                the portfolio because it mirrors the kind of intake, triage, and
+                status management used by support teams.
+              </p>
+            </div>
+            <div className="feature-demo-actions">
+              <Link href="/projects" className="primary-link">
+                Open Project Page
+              </Link>
+              <span className="status-pill">Live demo web version coming next</span>
+            </div>
+          </div>
         </section>
 
         <section className="closing-grid">
@@ -195,6 +187,18 @@ export default function Home() {
             </p>
             <a href="mailto:harshpanchal952@gmail.com">harshpanchal952@gmail.com</a>
             <a href="tel:6475942795">647-594-2795</a>
+            <div className="social-links">
+              <a href={githubUrl} target="_blank" rel="noreferrer">
+                GitHub
+              </a>
+              {linkedInUrl ? (
+                <a href={linkedInUrl} target="_blank" rel="noreferrer">
+                  LinkedIn
+                </a>
+              ) : (
+                <span className="social-placeholder">LinkedIn URL needed</span>
+              )}
+            </div>
           </article>
         </section>
       </main>
