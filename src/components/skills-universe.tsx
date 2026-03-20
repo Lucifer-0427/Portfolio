@@ -55,8 +55,10 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
     isDragging: false,
     lastX: 0,
     lastY: 0,
-    velocityX: 0.0035,
-    velocityY: -0.0025,
+    targetVelocityX: 0.0018,
+    targetVelocityY: -0.0012,
+    targetRotationX: -0.4,
+    targetRotationY: 0.55,
     rotationX: -0.4,
     rotationY: 0.55,
   });
@@ -70,19 +72,22 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
     const animate = () => {
       const state = dragState.current;
       if (!state.isDragging) {
-        state.rotationX += state.velocityY;
-        state.rotationY += state.velocityX;
-        state.velocityX *= 0.992;
-        state.velocityY *= 0.992;
+        state.targetRotationX += state.targetVelocityY;
+        state.targetRotationY += state.targetVelocityX;
+        state.targetVelocityX *= 0.989;
+        state.targetVelocityY *= 0.989;
 
-        if (Math.abs(state.velocityX) < 0.0015) {
-          state.velocityX = 0.0015;
+        if (Math.abs(state.targetVelocityX) < 0.0006) {
+          state.targetVelocityX = 0.0006;
         }
 
-        if (Math.abs(state.velocityY) < 0.0008) {
-          state.velocityY = -0.0008;
+        if (Math.abs(state.targetVelocityY) < 0.00035) {
+          state.targetVelocityY = -0.00035;
         }
       }
+
+      state.rotationX += (state.targetRotationX - state.rotationX) * 0.12;
+      state.rotationY += (state.targetRotationY - state.rotationY) * 0.12;
 
       setRotation({
         x: state.rotationX,
@@ -158,6 +163,7 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
           dragState.current.isDragging = true;
           dragState.current.lastX = event.clientX;
           dragState.current.lastY = event.clientY;
+          (event.currentTarget as HTMLDivElement).setPointerCapture(event.pointerId);
         }}
         onPointerMove={(event) => {
           if (!dragState.current.isDragging) {
@@ -168,10 +174,10 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
           const dy = event.clientY - dragState.current.lastY;
           dragState.current.lastX = event.clientX;
           dragState.current.lastY = event.clientY;
-          dragState.current.rotationY += dx * 0.008;
-          dragState.current.rotationX += dy * 0.008;
-          dragState.current.velocityX = dx * 0.0009;
-          dragState.current.velocityY = dy * 0.0009;
+          dragState.current.targetRotationY += dx * 0.0065;
+          dragState.current.targetRotationX += dy * 0.0065;
+          dragState.current.targetVelocityX = dx * 0.00042;
+          dragState.current.targetVelocityY = dy * 0.00042;
           setRotation({
             x: dragState.current.rotationX,
             y: dragState.current.rotationY,

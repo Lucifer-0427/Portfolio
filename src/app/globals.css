@@ -440,7 +440,7 @@ h3 {
   left: 50%;
   top: 50%;
   transform:
-    translate(calc(-50% + var(--skill-x)), calc(-50% + var(--skill-y)))
+    translate3d(calc(-50% + var(--skill-x)), calc(-50% + var(--skill-y)), 0)
     scale(var(--skill-scale));
   min-width: 4rem;
   padding: 0.3rem;
@@ -450,18 +450,18 @@ h3 {
   color: var(--text);
   opacity: var(--skill-opacity);
   transition:
-    transform 0.18s ease,
-    opacity 0.18s ease,
-    border-color 0.18s ease,
-    filter 0.18s ease;
+    transform 0.26s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.22s ease,
+    filter 0.22s ease;
   text-align: center;
+  will-change: transform, opacity;
 }
 
 .skill-node:hover,
 .skill-node:focus-visible,
 .skill-node--active {
   transform:
-    translate(calc(-50% + var(--skill-x)), calc(-50% + var(--skill-y)))
+    translate3d(calc(-50% + var(--skill-x)), calc(-50% + var(--skill-y)), 0)
     scale(calc(var(--skill-scale) + 0.24));
   filter: drop-shadow(0 0 18px color-mix(in srgb, var(--skill-accent) 40%, transparent));
   z-index: 2;
