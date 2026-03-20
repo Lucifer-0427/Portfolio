@@ -55,8 +55,8 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
     isDragging: false,
     lastX: 0,
     lastY: 0,
-    targetVelocityX: 0.0018,
-    targetVelocityY: -0.0012,
+    targetVelocityX: 0.0011,
+    targetVelocityY: -0.0007,
     targetRotationX: -0.4,
     targetRotationY: 0.55,
     rotationX: -0.4,
@@ -74,20 +74,20 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
       if (!state.isDragging) {
         state.targetRotationX += state.targetVelocityY;
         state.targetRotationY += state.targetVelocityX;
-        state.targetVelocityX *= 0.989;
-        state.targetVelocityY *= 0.989;
+        state.targetVelocityX *= 0.992;
+        state.targetVelocityY *= 0.992;
 
-        if (Math.abs(state.targetVelocityX) < 0.0006) {
-          state.targetVelocityX = 0.0006;
+        if (Math.abs(state.targetVelocityX) < 0.00028) {
+          state.targetVelocityX = 0.00028;
         }
 
-        if (Math.abs(state.targetVelocityY) < 0.00035) {
-          state.targetVelocityY = -0.00035;
+        if (Math.abs(state.targetVelocityY) < 0.00016) {
+          state.targetVelocityY = -0.00016;
         }
       }
 
-      state.rotationX += (state.targetRotationX - state.rotationX) * 0.12;
-      state.rotationY += (state.targetRotationY - state.rotationY) * 0.12;
+      state.rotationX += (state.targetRotationX - state.rotationX) * 0.08;
+      state.rotationY += (state.targetRotationY - state.rotationY) * 0.08;
 
       setRotation({
         x: state.rotationX,
@@ -121,23 +121,14 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
 
       return {
         ...skills[index],
-        x: rotated.x * 210,
-        y: rotated.y * 170,
+        x: rotated.x * 245,
+        y: rotated.y * 195,
         z: rotated.z,
         scale,
         opacity: 0.18 + depth * 0.95,
       };
     })
     .sort((a, b) => a.z - b.z);
-
-  const lines = [];
-  for (let index = 0; index < projectedSkills.length; index += 1) {
-    const current = projectedSkills[index];
-    const next = projectedSkills[(index + 2) % projectedSkills.length];
-    const cross = projectedSkills[(index + 5) % projectedSkills.length];
-    lines.push([current, next]);
-    lines.push([current, cross]);
-  }
 
   return (
     <section className="skills-universe terminal-panel">
@@ -176,8 +167,8 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
           dragState.current.lastY = event.clientY;
           dragState.current.targetRotationY += dx * 0.0065;
           dragState.current.targetRotationX += dy * 0.0065;
-          dragState.current.targetVelocityX = dx * 0.00042;
-          dragState.current.targetVelocityY = dy * 0.00042;
+          dragState.current.targetVelocityX = dx * 0.00022;
+          dragState.current.targetVelocityY = dy * 0.00022;
           setRotation({
             x: dragState.current.rotationX,
             y: dragState.current.rotationY,
@@ -188,15 +179,15 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
           <div className="skills-orb__glow" />
           <div className="skills-orb__core" />
           <svg className="skills-orb__mesh" viewBox="0 0 1000 760" preserveAspectRatio="none">
-            {lines.map(([start, end], index) => (
-              <line
-                key={index}
-                x1={500 + start.x}
-                y1={380 + start.y}
-                x2={500 + end.x}
-                y2={380 + end.y}
-              />
-            ))}
+            <g transform={`rotate(${rotation.y * 18} 500 380)`}>
+              <ellipse cx="500" cy="380" rx="250" ry="180" />
+              <ellipse cx="500" cy="380" rx="250" ry="112" />
+              <ellipse cx="500" cy="380" rx="250" ry="54" />
+            </g>
+            <g transform={`rotate(${rotation.x * 22} 500 380)`}>
+              <ellipse cx="500" cy="380" rx="96" ry="250" />
+              <ellipse cx="500" cy="380" rx="166" ry="250" />
+            </g>
           </svg>
 
           {projectedSkills.map((skill, index) => {
