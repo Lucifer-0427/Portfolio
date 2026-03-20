@@ -40,9 +40,27 @@ main {
 }
 
 .portfolio-shell {
+  position: relative;
+  z-index: 1;
   width: min(1180px, calc(100% - 2rem));
   margin: 0 auto;
   padding: 2rem 0 3rem;
+}
+
+.vanta-clouds {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+}
+
+.portfolio-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(245, 239, 227, 0.2) 0%, rgba(245, 239, 227, 0.56) 52%, rgba(249, 244, 234, 0.92) 100%);
+  pointer-events: none;
 }
 
 .hero,

@@ -1,3 +1,5 @@
+import { VantaClouds } from "@/components/vanta-clouds";
+
 const strengths = [
   "Troubleshooting and technical problem solving",
   "Windows environment familiarity",
@@ -51,6 +53,7 @@ const targets = [
 export default function Home() {
   return (
     <main className="portfolio-shell">
+      <VantaClouds />
       <section className="hero">
         <div className="hero-copy">
           <p className="kicker">Harsh Panchal</p>
