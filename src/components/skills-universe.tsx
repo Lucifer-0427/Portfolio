@@ -66,6 +66,7 @@ function buildMeshPoints(count: number): Point3D[] {
 }
 
 export function SkillsUniverse({ skills }: SkillsUniverseProps) {
+  const [isCoarsePointer, setIsCoarsePointer] = useState(false);
   const dragState = useRef({
     isDragging: false,
     activePointerId: -1,
@@ -86,25 +87,38 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
   const meshPoints = useMemo(() => buildMeshPoints(36), []);
 
   useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const mediaQuery = window.matchMedia("(pointer: coarse)");
+    const sync = () => setIsCoarsePointer(mediaQuery.matches);
+    sync();
+
+    mediaQuery.addEventListener("change", sync);
+    return () => mediaQuery.removeEventListener("change", sync);
+  }, []);
+
+  useEffect(() => {
     const animate = () => {
       const state = dragState.current;
       if (!state.isDragging) {
         state.targetRotationX += state.targetVelocityY;
         state.targetRotationY += state.targetVelocityX;
-        state.targetVelocityX *= 0.994;
-        state.targetVelocityY *= 0.994;
+        state.targetVelocityX *= isCoarsePointer ? 0.996 : 0.994;
+        state.targetVelocityY *= isCoarsePointer ? 0.996 : 0.994;
 
-        if (Math.abs(state.targetVelocityX) < 0.00008) {
-          state.targetVelocityX = 0.00008;
+        if (Math.abs(state.targetVelocityX) < (isCoarsePointer ? 0.00003 : 0.00008)) {
+          state.targetVelocityX = isCoarsePointer ? 0.00003 : 0.00008;
         }
 
-        if (Math.abs(state.targetVelocityY) < 0.00005) {
-          state.targetVelocityY = -0.00005;
+        if (Math.abs(state.targetVelocityY) < (isCoarsePointer ? 0.00002 : 0.00005)) {
+          state.targetVelocityY = isCoarsePointer ? -0.00002 : -0.00005;
         }
       }
 
-      state.rotationX += (state.targetRotationX - state.rotationX) * 0.055;
-      state.rotationY += (state.targetRotationY - state.rotationY) * 0.055;
+      state.rotationX += (state.targetRotationX - state.rotationX) * (isCoarsePointer ? 0.04 : 0.055);
+      state.rotationY += (state.targetRotationY - state.rotationY) * (isCoarsePointer ? 0.04 : 0.055);
 
       setRotation({
         x: state.rotationX,
@@ -119,7 +133,7 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
         window.cancelAnimationFrame(animationRef.current);
       }
     };
-  }, []);
+  }, [isCoarsePointer]);
 
   useEffect(() => {
     const stopDragging = (pointerId?: number) => {
@@ -144,12 +158,14 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
 
       const dx = event.clientX - dragState.current.lastX;
       const dy = event.clientY - dragState.current.lastY;
+      const dragScale = isCoarsePointer ? 0.0038 : 0.0065;
+      const velocityScale = isCoarsePointer ? 0.00012 : 0.00022;
       dragState.current.lastX = event.clientX;
       dragState.current.lastY = event.clientY;
-      dragState.current.targetRotationY += dx * 0.0065;
-      dragState.current.targetRotationX += dy * 0.0065;
-      dragState.current.targetVelocityX = dx * 0.00022;
-      dragState.current.targetVelocityY = dy * 0.00022;
+      dragState.current.targetRotationY += dx * dragScale;
+      dragState.current.targetRotationX += dy * dragScale;
+      dragState.current.targetVelocityX = dx * velocityScale;
+      dragState.current.targetVelocityY = dy * velocityScale;
       setRotation({
         x: dragState.current.rotationX,
         y: dragState.current.rotationY,
@@ -172,7 +188,7 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
       window.removeEventListener("pointerup", handlePointerUp);
       window.removeEventListener("pointercancel", handlePointerCancel);
     };
-  }, []);
+  }, [isCoarsePointer]);
 
   const projectedSkills = basePoints
     .map((point, index) => {

@@ -21,7 +21,7 @@ export default function Home() {
             <Link href="/" className="brand-lockup">
               Harsh Panchal
             </Link>
-            <p className="identity-status">Open to IT support and technical support roles</p>
+            <p className="identity-status">Computer Programming graduate building practical, polished software projects</p>
           </div>
 
           <nav className="top-nav__links">
@@ -39,12 +39,12 @@ export default function Home() {
         <section className="hero-clean">
           <div className="hero-copy">
             <p className="terminal-label">{"// Portfolio"}</p>
-            <h1>IT support focused portfolio with practical projects and interactive technical depth.</h1>
+            <h1>Practical software projects, thoughtful interfaces, and interactive technical depth.</h1>
             <p className="lede">
-              Computer Programming diploma graduate building toward a career in
-              IT support, service desk, and technical support. The goal of this
-              site is simple: show real project work, strong troubleshooting
-              instincts, and a clean technical presentation.
+              I build projects that focus on logic, usability, and clean
+              execution. This site is meant to show real work, a steady problem
+              solving approach, and the kind of technical curiosity that keeps
+              improving with every build.
             </p>
             <div className="hero-actions">
               <Link href="/projects" className="primary-link">
@@ -61,9 +61,9 @@ export default function Home() {
 
           <aside className="hero-side">
             <article className="metric-console glass-panel">
-              <span className="metric-console__label">Focus</span>
-              <strong>IT Support</strong>
-              <p>Support workflow, debugging, and user-focused problem solving.</p>
+              <span className="metric-console__label">Approach</span>
+              <strong>Problem Solving</strong>
+              <p>Workflow thinking, debugging, and user-aware technical decisions.</p>
             </article>
             <article className="metric-console glass-panel">
               <span className="metric-console__label">Education</span>
@@ -83,11 +83,11 @@ export default function Home() {
         <section className="projects-section">
           <div className="section-heading glass-panel">
             <p className="terminal-label">{"// Featured builds"}</p>
-            <h2>Projects that connect software logic with support-minded execution.</h2>
+            <h2>Projects built around software logic, experimentation, and usable design.</h2>
             <p className="section-copy">
-              The goal is not just to build things that work, but to show calm
-              technical thinking, clear workflow design, and problem-solving
-              that feels useful in a real environment.
+              Each project highlights a different kind of technical thinking,
+              from business logic and systems workflow to interactive builds and
+              game mechanics.
             </p>
           </div>
 
@@ -113,10 +113,11 @@ export default function Home() {
         <section className="closing-grid">
           <article className="quote-card glass-panel">
             <p className="terminal-label">{"// Working style"}</p>
-            <h2>Clear communication, technical patience, and practical follow-through.</h2>
+            <h2>Clear thinking, steady iteration, and a strong eye for practical details.</h2>
             <p>
-              I&apos;m most interested in work where solving the problem matters,
-              but so does how supported the user feels during that process.
+              I enjoy work that rewards curiosity, care, and improvement over
+              time, especially when a project becomes easier to use because of
+              the technical choices behind it.
             </p>
             <ul className="bullet-list">
               {focusAreas.map((item) => (
@@ -127,10 +128,10 @@ export default function Home() {
 
           <article id="contact" className="contact-card glass-panel">
             <p className="terminal-label">{"// Contact"}</p>
-            <h2>Message Harsh directly.</h2>
+            <h2>Get in touch.</h2>
             <p>
-              Available for entry-level IT support, help desk, technical
-              support, and junior developer opportunities.
+              Open to new opportunities, collaborations, and conversations about
+              projects, development, and technical work.
             </p>
             <a href="mailto:harshpanchal952@gmail.com">harshpanchal952@gmail.com</a>
             <a href="tel:6475942795">647-594-2795</a>

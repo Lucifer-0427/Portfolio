@@ -25,13 +25,13 @@ export function VantaClouds() {
       gyroControls: false,
       minHeight: 200,
       minWidth: 200,
-      skyColor: 0x06101d,
-      cloudColor: 0x16314f,
-      cloudShadowColor: 0x081321,
-      sunColor: 0x56d2ff,
-      sunGlareColor: 0x2d84ff,
-      sunlightColor: 0x5bdaa4,
-      speed: 0.55,
+      skyColor: 0x0b1220,
+      cloudColor: 0x17263a,
+      cloudShadowColor: 0x09111d,
+      sunColor: 0x68d3ff,
+      sunGlareColor: 0x9be7ff,
+      sunlightColor: 0x7ef7c6,
+      speed: 0.42,
     }) as VantaCloudsEffect;
 
     return () => {
