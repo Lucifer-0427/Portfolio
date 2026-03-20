@@ -84,7 +84,10 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
   const [rotation, setRotation] = useState({ x: -0.4, y: 0.55 });
 
   const basePoints = useMemo(() => buildSpherePoints(skills.length), [skills.length]);
-  const meshPoints = useMemo(() => buildMeshPoints(36), []);
+  const meshPoints = useMemo(
+    () => buildMeshPoints(isCoarsePointer ? 24 : 36),
+    [isCoarsePointer],
+  );
 
   useEffect(() => {
     if (typeof window === "undefined") {
@@ -105,20 +108,30 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
       if (!state.isDragging) {
         state.targetRotationX += state.targetVelocityY;
         state.targetRotationY += state.targetVelocityX;
-        state.targetVelocityX *= isCoarsePointer ? 0.996 : 0.994;
-        state.targetVelocityY *= isCoarsePointer ? 0.996 : 0.994;
+        state.targetVelocityX *= isCoarsePointer ? 0.94 : 0.994;
+        state.targetVelocityY *= isCoarsePointer ? 0.94 : 0.994;
 
-        if (Math.abs(state.targetVelocityX) < (isCoarsePointer ? 0.00003 : 0.00008)) {
-          state.targetVelocityX = isCoarsePointer ? 0.00003 : 0.00008;
-        }
+        if (isCoarsePointer) {
+          if (Math.abs(state.targetVelocityX) < 0.00001) {
+            state.targetVelocityX = 0;
+          }
 
-        if (Math.abs(state.targetVelocityY) < (isCoarsePointer ? 0.00002 : 0.00005)) {
-          state.targetVelocityY = isCoarsePointer ? -0.00002 : -0.00005;
+          if (Math.abs(state.targetVelocityY) < 0.00001) {
+            state.targetVelocityY = 0;
+          }
+        } else {
+          if (Math.abs(state.targetVelocityX) < 0.00008) {
+            state.targetVelocityX = 0.00008;
+          }
+
+          if (Math.abs(state.targetVelocityY) < 0.00005) {
+            state.targetVelocityY = -0.00005;
+          }
         }
       }
 
-      state.rotationX += (state.targetRotationX - state.rotationX) * (isCoarsePointer ? 0.04 : 0.055);
-      state.rotationY += (state.targetRotationY - state.rotationY) * (isCoarsePointer ? 0.04 : 0.055);
+      state.rotationX += (state.targetRotationX - state.rotationX) * (isCoarsePointer ? 0.11 : 0.055);
+      state.rotationY += (state.targetRotationY - state.rotationY) * (isCoarsePointer ? 0.11 : 0.055);
 
       setRotation({
         x: state.rotationX,
@@ -158,8 +171,8 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
 
       const dx = event.clientX - dragState.current.lastX;
       const dy = event.clientY - dragState.current.lastY;
-      const dragScale = isCoarsePointer ? 0.0038 : 0.0065;
-      const velocityScale = isCoarsePointer ? 0.00012 : 0.00022;
+      const dragScale = isCoarsePointer ? 0.0044 : 0.0065;
+      const velocityScale = isCoarsePointer ? 0.00009 : 0.00022;
       dragState.current.lastX = event.clientX;
       dragState.current.lastY = event.clientY;
       dragState.current.targetRotationY += dx * dragScale;
