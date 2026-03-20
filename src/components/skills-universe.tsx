@@ -217,19 +217,7 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
   return (
     <section className="skills-universe terminal-panel">
       <div className="skills-universe__header">
-        <div>
-          <p className="terminal-label">{"// Skills.json"}</p>
-          <h2>Drag to explore my technical toolkit.</h2>
-          <p className="section-copy">
-            Hover a skill to highlight it. Drag the sphere to rotate and inspect
-            the full set from different angles.
-          </p>
-        </div>
-
-        <div className="skills-universe__meta">
-          <span className="status-pill">Interactive</span>
-          <span className="status-pill status-pill--green">Hover + drag enabled</span>
-        </div>
+        <p className="terminal-label">{"// Skills.json"}</p>
       </div>
 
       <div

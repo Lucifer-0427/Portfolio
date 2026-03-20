@@ -354,13 +354,6 @@ h3 {
   align-items: center;
 }
 
-.skills-universe__meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  justify-content: flex-end;
-}
-
 .skills-orb-stage {
   position: relative;
   margin-top: 1.2rem;
