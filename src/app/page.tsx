@@ -105,6 +105,14 @@ export default function Home() {
                     <li key={highlight}>{highlight}</li>
                   ))}
                 </ul>
+                <div className="project-actions">
+                  <Link href={`/projects/${project.slug}`} className="secondary-link">
+                    View Project
+                  </Link>
+                  <a href={project.repoUrl} target="_blank" rel="noreferrer" className="secondary-link">
+                    GitHub
+                  </a>
+                </div>
               </article>
             ))}
           </div>

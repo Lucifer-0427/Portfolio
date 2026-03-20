@@ -2,6 +2,19 @@ export const githubUrl = "https://github.com/Lucifer-0427";
 
 export const linkedInUrl = "https://www.linkedin.com/in/harsh-panchal-608b11288";
 
+export type Project = {
+  slug: string;
+  title: string;
+  label: string;
+  summary: string;
+  stack: string;
+  highlights: string[];
+  liveStatus: string;
+  detail: string;
+  repoUrl: string;
+  liveUrl?: string;
+};
+
 export const strengths = [
   "Troubleshooting and technical problem solving",
   "Windows environment familiarity",
@@ -84,8 +97,9 @@ export const skillsUniverse = [
   },
 ];
 
-export const projects = [
+export const projects: Project[] = [
   {
+    slug: "resolveit-help-desk-ticketing-system",
     title: "ResolveIT Help Desk Ticketing System",
     label: "Featured Project",
     summary:
@@ -96,8 +110,12 @@ export const projects = [
       "Modeled realistic requests like VPN instability, password resets, and device support incidents.",
     ],
     liveStatus: "Demo concept ready. Next step is a deployable web demo version.",
+    detail:
+      "ResolveIT is designed as a realistic internal support workflow project. The focus is on practical issue intake, categorization, triage, and status updates that feel close to an actual help desk environment. It is the strongest portfolio piece for showing workflow thinking, structured problem solving, and how software can support technical operations.",
+    repoUrl: githubUrl,
   },
   {
+    slug: "supermarket-website-dynamic-pricing",
     title: "Supermarket Website with Dynamic Pricing",
     label: "Business Logic",
     summary:
@@ -108,8 +126,12 @@ export const projects = [
       "Strengthened full-stack thinking, testing habits, and logic design under real-world style constraints.",
     ],
     liveStatus: "Project summary available for portfolio review.",
+    detail:
+      "This project focuses on conditional logic and pricing behavior rather than just presentation. It shows how product pricing can change based on rules and scenarios, which makes it a good example of business-focused web development. The project highlights reasoning, testing, and building interfaces that respond to underlying logic.",
+    repoUrl: githubUrl,
   },
   {
+    slug: "space-fighter-game",
     title: "Space Fighter Game",
     label: "Programming Depth",
     summary:
@@ -120,6 +142,9 @@ export const projects = [
       "Used repeated testing and debugging to improve responsiveness, logic, and game feel.",
     ],
     liveStatus: "Desktop-style project highlighted through portfolio case study.",
+    detail:
+      "The space fighter game is a programming-focused project built to sharpen logic, systems design, and debugging. It brings together movement, collisions, enemy patterns, and scoring into a complete gameplay loop. It also shows comfort with iteration, because game feel improves through repeated tuning and fixes.",
+    repoUrl: githubUrl,
   },
 ];
 

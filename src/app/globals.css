@@ -352,12 +352,43 @@ h3 {
 
 .project-card {
   min-height: 23rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-stack {
   margin-top: 1rem;
   font-weight: 800;
   color: var(--text);
+}
+
+.project-summary {
+  margin-top: 0.75rem;
+}
+
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.project-card .secondary-link,
+.project-card .primary-link,
+.featured-case-study .secondary-link,
+.featured-case-study .primary-link,
+.resume-card .secondary-link,
+.resume-card .primary-link,
+.project-links-note .secondary-link {
+  width: fit-content;
+}
+
+.project-links-note {
+  margin-top: 1.2rem;
+  padding: 1.35rem;
+  display: grid;
+  gap: 0.9rem;
 }
 
 .bullet-list {
