@@ -6,6 +6,7 @@ type SkillNode = {
   label: string;
   category: string;
   accent: string;
+  icon: string;
 };
 
 type SkillsUniverseProps = {
@@ -111,18 +112,27 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
     .map((point, index) => {
       const rotated = rotatePoint(point, rotation.x, rotation.y);
       const depth = (rotated.z + 1) / 2;
-      const scale = 0.65 + depth * 0.75;
+      const scale = 0.7 + depth * 0.55;
 
       return {
         ...skills[index],
-        x: rotated.x * 170,
+        x: rotated.x * 210,
         y: rotated.y * 170,
         z: rotated.z,
         scale,
-        opacity: 0.3 + depth * 0.8,
+        opacity: 0.18 + depth * 0.95,
       };
     })
     .sort((a, b) => a.z - b.z);
+
+  const lines = [];
+  for (let index = 0; index < projectedSkills.length; index += 1) {
+    const current = projectedSkills[index];
+    const next = projectedSkills[(index + 2) % projectedSkills.length];
+    const cross = projectedSkills[(index + 5) % projectedSkills.length];
+    lines.push([current, next]);
+    lines.push([current, cross]);
+  }
 
   return (
     <section className="skills-universe terminal-panel">
@@ -171,6 +181,17 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
         <div className="skills-orb" aria-hidden="true">
           <div className="skills-orb__glow" />
           <div className="skills-orb__core" />
+          <svg className="skills-orb__mesh" viewBox="0 0 1000 760" preserveAspectRatio="none">
+            {lines.map(([start, end], index) => (
+              <line
+                key={index}
+                x1={500 + start.x}
+                y1={380 + start.y}
+                x2={500 + end.x}
+                y2={380 + end.y}
+              />
+            ))}
+          </svg>
 
           {projectedSkills.map((skill, index) => {
             const isActive = hoveredSkill === skill.label;
@@ -192,6 +213,12 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
                 onMouseEnter={() => setHoveredSkill(skill.label)}
                 onFocus={() => setHoveredSkill(skill.label)}
               >
+                <img
+                  src={skill.icon}
+                  alt={skill.label}
+                  className="skill-node__icon"
+                  loading="lazy"
+                />
                 <span className="skill-node__label">{skill.label}</span>
                 <span className="skill-node__category">{skill.category}</span>
               </button>

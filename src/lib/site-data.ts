@@ -10,20 +10,78 @@ export const strengths = [
 ];
 
 export const skillsUniverse = [
-  { label: "C#", category: "Language", accent: "#845ef7" },
-  { label: "JavaScript", category: "Language", accent: "#ffd43b" },
-  { label: "HTML", category: "Frontend", accent: "#ff6f2c" },
-  { label: "CSS", category: "Frontend", accent: "#4dabf7" },
-  { label: "SQL", category: "Database", accent: "#63e6be" },
-  { label: "ASP.NET", category: "Backend", accent: "#9775fa" },
-  { label: "MVC", category: "Architecture", accent: "#ffa94d" },
-  { label: "MonoGame", category: "Framework", accent: "#74c0fc" },
-  { label: "Git", category: "Version Control", accent: "#ff8787" },
-  { label: "GitHub", category: "Collaboration", accent: "#f8f9fa" },
-  { label: "MySQL", category: "Database", accent: "#4dd4ac" },
-  { label: "Windows", category: "Platform", accent: "#91a7ff" },
-  { label: "Debugging", category: "Workflow", accent: "#ff922b" },
-  { label: "Troubleshooting", category: "Support", accent: "#69db7c" },
+  {
+    label: "JavaScript",
+    category: "Language",
+    accent: "#ffd43b",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+  },
+  {
+    label: "TypeScript",
+    category: "Language",
+    accent: "#4dabf7",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+  },
+  {
+    label: "React",
+    category: "Frontend",
+    accent: "#61dafb",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  },
+  {
+    label: "C#",
+    category: "Language",
+    accent: "#845ef7",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
+  },
+  {
+    label: "Git",
+    category: "Version Control",
+    accent: "#ff6b6b",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+  },
+  {
+    label: "MySQL",
+    category: "Database",
+    accent: "#4dd4ac",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg",
+  },
+  {
+    label: "Java",
+    category: "Language",
+    accent: "#ff922b",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+  },
+  {
+    label: "Python",
+    category: "Language",
+    accent: "#ffd43b",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+  },
+  {
+    label: "Go",
+    category: "Language",
+    accent: "#74c0fc",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original-wordmark.svg",
+  },
+  {
+    label: "MongoDB",
+    category: "Database",
+    accent: "#69db7c",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original-wordmark.svg",
+  },
+  {
+    label: "Kotlin",
+    category: "Language",
+    accent: "#e879f9",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg",
+  },
+  {
+    label: "Redis",
+    category: "Database",
+    accent: "#ff6b6b",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+  },
 ];
 
 export const projects = [
