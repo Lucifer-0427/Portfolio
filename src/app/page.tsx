@@ -62,6 +62,21 @@ export default function Home() {
               <span>Computer Programming Diploma</span>
               <span>Toronto Area</span>
             </div>
+
+            <div className="metric-strip">
+              <div className="metric-tile">
+                <strong>3</strong>
+                <span>featured builds</span>
+              </div>
+              <div className="metric-tile">
+                <strong>4</strong>
+                <span>target roles</span>
+              </div>
+              <div className="metric-tile">
+                <strong>IT</strong>
+                <span>support focus</span>
+              </div>
+            </div>
           </div>
 
           <aside className="hero-panel">
