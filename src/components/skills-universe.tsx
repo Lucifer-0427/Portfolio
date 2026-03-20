@@ -51,6 +51,7 @@ function rotatePoint(point: Point3D, rx: number, ry: number): Point3D {
 }
 
 export function SkillsUniverse({ skills }: SkillsUniverseProps) {
+  const stageRef = useRef<HTMLDivElement | null>(null);
   const dragState = useRef({
     isDragging: false,
     lastX: 0,
@@ -105,12 +106,30 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
   }, []);
 
   useEffect(() => {
-    const handlePointerUp = () => {
+    const stopDragging = (pointerId?: number) => {
       dragState.current.isDragging = false;
+      if (
+        pointerId !== undefined &&
+        stageRef.current?.hasPointerCapture(pointerId)
+      ) {
+        stageRef.current.releasePointerCapture(pointerId);
+      }
+    };
+
+    const handlePointerUp = (event: PointerEvent) => {
+      stopDragging(event.pointerId);
+    };
+
+    const handlePointerCancel = (event: PointerEvent) => {
+      stopDragging(event.pointerId);
     };
 
     window.addEventListener("pointerup", handlePointerUp);
-    return () => window.removeEventListener("pointerup", handlePointerUp);
+    window.addEventListener("pointercancel", handlePointerCancel);
+    return () => {
+      window.removeEventListener("pointerup", handlePointerUp);
+      window.removeEventListener("pointercancel", handlePointerCancel);
+    };
   }, []);
 
   const projectedSkills = basePoints
@@ -149,6 +168,7 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
       </div>
 
       <div
+        ref={stageRef}
         className="skills-orb-stage"
         onPointerDown={(event) => {
           dragState.current.isDragging = true;
@@ -173,6 +193,26 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
             x: dragState.current.rotationX,
             y: dragState.current.rotationY,
           });
+        }}
+        onPointerUp={(event) => {
+          dragState.current.isDragging = false;
+          if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+            event.currentTarget.releasePointerCapture(event.pointerId);
+          }
+        }}
+        onPointerCancel={(event) => {
+          dragState.current.isDragging = false;
+          if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+            event.currentTarget.releasePointerCapture(event.pointerId);
+          }
+        }}
+        onPointerLeave={(event) => {
+          if (dragState.current.isDragging && (event.buttons & 1) !== 1) {
+            dragState.current.isDragging = false;
+            if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+              event.currentTarget.releasePointerCapture(event.pointerId);
+            }
+          }
         }}
       >
         <div className="skills-orb" aria-hidden="true">
