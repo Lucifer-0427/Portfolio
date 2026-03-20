@@ -1,6 +1,6 @@
 export const githubUrl = "https://github.com/Lucifer-0427";
 
-export const linkedInUrl = "";
+export const linkedInUrl = "https://www.linkedin.com/in/harsh-panchal-608b11288";
 
 export const strengths = [
   "Troubleshooting and technical problem solving",
