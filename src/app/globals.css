@@ -369,6 +369,8 @@ h3 {
   background: transparent;
   overflow: hidden;
   cursor: grab;
+  touch-action: none;
+  user-select: none;
 }
 
 .skills-orb-stage:active {

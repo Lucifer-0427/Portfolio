@@ -51,9 +51,9 @@ function rotatePoint(point: Point3D, rx: number, ry: number): Point3D {
 }
 
 export function SkillsUniverse({ skills }: SkillsUniverseProps) {
-  const stageRef = useRef<HTMLDivElement | null>(null);
   const dragState = useRef({
     isDragging: false,
+    activePointerId: -1,
     lastX: 0,
     lastY: 0,
     targetVelocityX: 0.0011,
@@ -107,13 +107,37 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
 
   useEffect(() => {
     const stopDragging = (pointerId?: number) => {
-      dragState.current.isDragging = false;
       if (
         pointerId !== undefined &&
-        stageRef.current?.hasPointerCapture(pointerId)
+        dragState.current.activePointerId !== -1 &&
+        pointerId !== dragState.current.activePointerId
       ) {
-        stageRef.current.releasePointerCapture(pointerId);
+        return;
       }
+      dragState.current.isDragging = false;
+      dragState.current.activePointerId = -1;
+    };
+
+    const handlePointerMove = (event: PointerEvent) => {
+      if (
+        !dragState.current.isDragging ||
+        event.pointerId !== dragState.current.activePointerId
+      ) {
+        return;
+      }
+
+      const dx = event.clientX - dragState.current.lastX;
+      const dy = event.clientY - dragState.current.lastY;
+      dragState.current.lastX = event.clientX;
+      dragState.current.lastY = event.clientY;
+      dragState.current.targetRotationY += dx * 0.0065;
+      dragState.current.targetRotationX += dy * 0.0065;
+      dragState.current.targetVelocityX = dx * 0.00022;
+      dragState.current.targetVelocityY = dy * 0.00022;
+      setRotation({
+        x: dragState.current.rotationX,
+        y: dragState.current.rotationY,
+      });
     };
 
     const handlePointerUp = (event: PointerEvent) => {
@@ -124,9 +148,11 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
       stopDragging(event.pointerId);
     };
 
+    window.addEventListener("pointermove", handlePointerMove);
     window.addEventListener("pointerup", handlePointerUp);
     window.addEventListener("pointercancel", handlePointerCancel);
     return () => {
+      window.removeEventListener("pointermove", handlePointerMove);
       window.removeEventListener("pointerup", handlePointerUp);
       window.removeEventListener("pointercancel", handlePointerCancel);
     };
@@ -168,51 +194,16 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
       </div>
 
       <div
-        ref={stageRef}
         className="skills-orb-stage"
         onPointerDown={(event) => {
-          dragState.current.isDragging = true;
-          dragState.current.lastX = event.clientX;
-          dragState.current.lastY = event.clientY;
-          (event.currentTarget as HTMLDivElement).setPointerCapture(event.pointerId);
-        }}
-        onPointerMove={(event) => {
-          if (!dragState.current.isDragging) {
+          event.preventDefault();
+          if (!event.isPrimary) {
             return;
           }
-
-          const dx = event.clientX - dragState.current.lastX;
-          const dy = event.clientY - dragState.current.lastY;
+          dragState.current.isDragging = true;
+          dragState.current.activePointerId = event.pointerId;
           dragState.current.lastX = event.clientX;
           dragState.current.lastY = event.clientY;
-          dragState.current.targetRotationY += dx * 0.0065;
-          dragState.current.targetRotationX += dy * 0.0065;
-          dragState.current.targetVelocityX = dx * 0.00022;
-          dragState.current.targetVelocityY = dy * 0.00022;
-          setRotation({
-            x: dragState.current.rotationX,
-            y: dragState.current.rotationY,
-          });
-        }}
-        onPointerUp={(event) => {
-          dragState.current.isDragging = false;
-          if (event.currentTarget.hasPointerCapture(event.pointerId)) {
-            event.currentTarget.releasePointerCapture(event.pointerId);
-          }
-        }}
-        onPointerCancel={(event) => {
-          dragState.current.isDragging = false;
-          if (event.currentTarget.hasPointerCapture(event.pointerId)) {
-            event.currentTarget.releasePointerCapture(event.pointerId);
-          }
-        }}
-        onPointerLeave={(event) => {
-          if (dragState.current.isDragging && (event.buttons & 1) !== 1) {
-            dragState.current.isDragging = false;
-            if (event.currentTarget.hasPointerCapture(event.pointerId)) {
-              event.currentTarget.releasePointerCapture(event.pointerId);
-            }
-          }
         }}
       >
         <div className="skills-orb" aria-hidden="true">
