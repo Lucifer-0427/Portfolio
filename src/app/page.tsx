@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { VantaClouds } from "@/components/vanta-clouds";
 import {
   focusAreas,
   githubUrl,
@@ -9,142 +8,157 @@ import {
   targets,
 } from "@/lib/site-data";
 
+const quickActions = [
+  "Ask about Harsh's skills and technical strengths",
+  "Review featured projects and support-focused work",
+  "Open a resume-ready summary for applications",
+  "Send a direct message for job opportunities",
+];
+
 export default function Home() {
+  const featuredProject = projects[0];
+
   return (
     <>
-      <main className="portfolio-shell">
-        <VantaClouds />
-        <header className="top-nav">
-          <Link href="/" className="brand-lockup">
-            Harsh Panchal
-          </Link>
+      <main className="portfolio-shell terminal-theme">
+        <header className="terminal-nav terminal-panel">
+          <div className="identity-block">
+            <div className="avatar-dot" />
+            <div>
+              <Link href="/" className="brand-lockup">
+                Harsh.ai
+              </Link>
+              <p className="identity-status">Open to IT support and technical support roles</p>
+            </div>
+          </div>
+
           <nav className="top-nav__links">
             <Link href="/projects">Projects</Link>
             <Link href="/resume">Resume</Link>
             <a href={githubUrl} target="_blank" rel="noreferrer">
               GitHub
             </a>
-            {linkedInUrl ? (
-              <a href={linkedInUrl} target="_blank" rel="noreferrer">
-                LinkedIn
-              </a>
-            ) : (
-              <a href="#contact">LinkedIn</a>
-            )}
+            <a
+              href={linkedInUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              LinkedIn
+            </a>
           </nav>
         </header>
 
-        <section className="hero">
-          <div className="hero-copy">
-            <p className="kicker">Harsh Panchal</p>
-            <h1>Entry-level IT support energy with a developer&apos;s mindset.</h1>
-            <p className="lede">
-              I build practical software that reflects how people actually ask
-              for help, use systems, and solve day-to-day technical problems. My
-              goal is to bring calm troubleshooting, strong communication, and
-              hands-on technical thinking into an IT support role.
-            </p>
+        <section className="hero-terminal">
+          <div className="assistant-column">
+            <div className="assistant-card terminal-panel">
+              <div className="terminal-bar">
+                <span className="terminal-pill active">Easy</span>
+                <span className="terminal-pill">Projects</span>
+                <span className="terminal-pill">Resume</span>
+              </div>
 
-            <div className="hero-actions">
-              <Link href="/projects" className="primary-link">
-                Explore Projects
-              </Link>
-              <Link href="/resume" className="secondary-link">
-                Resume
-              </Link>
-              <a href="#contact" className="secondary-link">
-                Contact Me
-              </a>
+              <p className="terminal-label">{"// Harsh's AI assistant"}</p>
+              <h1>I&apos;m Harsh&apos;s portfolio assistant, built to help teams understand how he works.</h1>
+              <p className="lede">
+                Computer Programming diploma graduate with a practical,
+                support-focused mindset. This portfolio is designed to quickly
+                show the projects, troubleshooting habits, and technical
+                strengths that matter for entry-level IT roles.
+              </p>
+
+              <div className="terminal-list">
+                <p className="terminal-section-title">What you can do here</p>
+                <ol>
+                  {quickActions.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ol>
+              </div>
+
+              <div className="hero-actions">
+                <Link href="/projects" className="primary-link">
+                  Open Projects
+                </Link>
+                <Link href="/resume" className="secondary-link">
+                  Open Resume
+                </Link>
+                <a href="#contact" className="secondary-link">
+                  Contact
+                </a>
+              </div>
             </div>
 
-            <div className="skill-ribbon">
-              <span>2025 Graduate</span>
-              <span>Computer Programming Diploma</span>
-              <span>Toronto Area</span>
-            </div>
-
-            <div className="metric-strip">
-              <div className="metric-tile">
-                <strong>3</strong>
-                <span>featured builds</span>
-              </div>
-              <div className="metric-tile">
-                <strong>4</strong>
-                <span>target roles</span>
-              </div>
-              <div className="metric-tile">
-                <strong>IT</strong>
-                <span>support focus</span>
-              </div>
+            <div className="metrics-row">
+              <article className="metric-console terminal-panel">
+                <span className="metric-console__label">Focus</span>
+                <strong>IT Support</strong>
+                <p>Support workflow, debugging, and user-focused problem solving.</p>
+              </article>
+              <article className="metric-console terminal-panel">
+                <span className="metric-console__label">Education</span>
+                <strong>2025 Graduate</strong>
+                <p>Computer Programming diploma with hands-on C# and web projects.</p>
+              </article>
+              <article className="metric-console terminal-panel">
+                <span className="metric-console__label">Projects</span>
+                <strong>3 Featured</strong>
+                <p>Including a help desk ticketing system and logic-heavy app work.</p>
+              </article>
             </div>
           </div>
 
-          <aside className="hero-panel">
-            <div className="hero-panel-card top-card">
-              <p className="mini-label">Career Direction</p>
-              <strong>IT support, service desk, and technical support.</strong>
-              <span>
-                Built for roles where troubleshooting, communication, and
-                practical systems thinking matter every day.
-              </span>
-            </div>
-
-            <div className="hero-panel-card grid-card">
-              <p className="mini-label">Core Focus</p>
-              <ul>
-                {focusAreas.map((item) => (
-                  <li key={item}>{item}</li>
+          <aside className="dashboard-column">
+            <div className="feature-module terminal-panel">
+              <p className="terminal-label">{"// Featured module"}</p>
+              <h2>{featuredProject.title}</h2>
+              <p>{featuredProject.summary}</p>
+              <ul className="bullet-list compact">
+                {featuredProject.highlights.map((highlight) => (
+                  <li key={highlight}>{highlight}</li>
                 ))}
               </ul>
+              <div className="status-row">
+                <span className="status-pill">Support Systems</span>
+                <span className="status-pill status-pill--green">Case Study Ready</span>
+              </div>
+            </div>
+
+            <div className="stack-grid">
+              <article className="mini-module terminal-panel">
+                <p className="terminal-label">{"// Skills"}</p>
+                <ul className="bullet-list">
+                  {strengths.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+
+              <article className="mini-module terminal-panel">
+                <p className="terminal-label">{"// Target roles"}</p>
+                <ul className="bullet-list">
+                  {targets.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
             </div>
           </aside>
         </section>
 
-        <section className="summary-grid">
-          <article className="glass-card intro-card">
-            <p className="section-tag">About</p>
-            <h2>Portfolio shaped for recruiters, hiring managers, and support teams.</h2>
-            <p>
-              My background combines programming fundamentals with hands-on
-              project work. I am targeting opportunities where I can support
-              users, troubleshoot technical issues, and grow inside a strong IT
-              environment.
-            </p>
-          </article>
-
-          <article className="glass-card">
-            <p className="section-tag">Technical Strengths</p>
-            <ul className="bullet-list">
-              {strengths.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </article>
-
-          <article className="glass-card">
-            <p className="section-tag">Target Roles</p>
-            <ul className="bullet-list">
-              {targets.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </article>
-        </section>
-
-        <section id="projects" className="projects-section">
-          <div className="section-heading">
-            <p className="section-tag">Projects</p>
-            <h2>Work that connects software skills with support-minded problem solving.</h2>
+        <section className="projects-section">
+          <div className="section-heading terminal-panel">
+            <p className="terminal-label">{"// Featured builds"}</p>
+            <h2>Projects that connect software logic with support-minded execution.</h2>
             <p className="section-copy">
-              These projects show how I approach logic, interfaces, workflow,
-              and debugging across both business applications and user-facing
-              systems.
+              The goal is not just to build things that work, but to show calm
+              technical thinking, clear workflow design, and problem-solving
+              that feels useful in a real environment.
             </p>
           </div>
 
           <div className="project-grid">
             {projects.map((project) => (
-              <article className="project-card" key={project.title}>
+              <article className="project-card terminal-panel" key={project.title}>
                 <div className="project-header">
                   <span className="project-label">{project.label}</span>
                   <h3>{project.title}</h3>
@@ -159,43 +173,26 @@ export default function Home() {
               </article>
             ))}
           </div>
-
-          <div className="feature-demo-card">
-            <div>
-              <p className="section-tag">Help Desk Demo</p>
-              <h3>ResolveIT is the project closest to real service desk work.</h3>
-              <p className="section-copy">
-                This featured project is set up as the strongest case study in
-                the portfolio because it mirrors the kind of intake, triage, and
-                status management used by support teams.
-              </p>
-            </div>
-            <div className="feature-demo-actions">
-              <Link href="/projects" className="primary-link">
-                Open Project Page
-              </Link>
-              <span className="status-pill">Live demo web version coming next</span>
-            </div>
-          </div>
         </section>
 
         <section className="closing-grid">
-          <article className="glass-card quote-card">
-            <p className="section-tag">Working Style</p>
-            <h2>
-              I like technical work that ends with the user feeling supported,
-              not overwhelmed.
-            </h2>
+          <article className="quote-card terminal-panel">
+            <p className="terminal-label">{"// Working style"}</p>
+            <h2>Clear communication, technical patience, and practical follow-through.</h2>
             <p>
-              The strongest IT teams solve problems clearly, communicate well,
-              and make systems easier to trust. That is the kind of environment
-              I want to contribute to.
+              I&apos;m most interested in work where solving the problem matters,
+              but so does how supported the user feels during that process.
             </p>
+            <ul className="bullet-list">
+              {focusAreas.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
           </article>
 
-          <article id="contact" className="glass-card contact-card">
-            <p className="section-tag">Contact</p>
-            <h2>Let&apos;s connect.</h2>
+          <article id="contact" className="contact-card terminal-panel">
+            <p className="terminal-label">{"// Contact"}</p>
+            <h2>Message Harsh directly.</h2>
             <p>
               Available for entry-level IT support, help desk, technical
               support, and junior developer opportunities.
@@ -206,22 +203,18 @@ export default function Home() {
               <a href={githubUrl} target="_blank" rel="noreferrer">
                 GitHub
               </a>
-              {linkedInUrl ? (
-                <a href={linkedInUrl} target="_blank" rel="noreferrer">
-                  LinkedIn
-                </a>
-              ) : (
-                <span className="social-placeholder">LinkedIn URL needed</span>
-              )}
+              <a href={linkedInUrl} target="_blank" rel="noreferrer">
+                LinkedIn
+              </a>
             </div>
           </article>
         </section>
       </main>
 
       <footer className="site-footer">
-        <div className="site-footer__inner">
-          <p>Harsh Panchal</p>
-          <span>Built with Next.js, Vanta, and a focus on practical IT career storytelling.</span>
+        <div className="site-footer__inner terminal-panel">
+          <p>Harsh.ai</p>
+          <span>Terminal-style portfolio with a cleaner recruiter-ready structure.</span>
         </div>
       </footer>
     </>
