@@ -1,0 +1,125 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="80" x2="1240" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#07101F" />
+      <stop offset="0.52" stop-color="#090C19" />
+      <stop offset="1" stop-color="#05070F" />
+    </linearGradient>
+    <radialGradient id="blueGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(336 352) rotate(37.2) scale(314 258)">
+      <stop stop-color="#69E3FF" stop-opacity="0.28" />
+      <stop offset="1" stop-color="#69E3FF" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="violetGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(458 214) rotate(90) scale(224 252)">
+      <stop stop-color="#8B5CF6" stop-opacity="0.24" />
+      <stop offset="1" stop-color="#8B5CF6" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="warmGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(566 544) rotate(29.5) scale(266 218)">
+      <stop stop-color="#F59E0B" stop-opacity="0.24" />
+      <stop offset="1" stop-color="#F59E0B" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="faceCool" x1="276" y1="186" x2="672" y2="642" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9CEBFF" />
+      <stop offset="0.28" stop-color="#4B82FF" />
+      <stop offset="0.66" stop-color="#7A63F8" />
+      <stop offset="1" stop-color="#111A2C" />
+    </linearGradient>
+    <linearGradient id="faceWarm" x1="452" y1="180" x2="690" y2="714" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF2C8" />
+      <stop offset="0.4" stop-color="#F6B36A" />
+      <stop offset="0.75" stop-color="#E26B2D" />
+      <stop offset="1" stop-color="#47201A" />
+    </linearGradient>
+    <linearGradient id="shardBlue" x1="170" y1="340" x2="424" y2="692" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#78E7FF" stop-opacity="0.92" />
+      <stop offset="1" stop-color="#0E1527" stop-opacity="0.08" />
+    </linearGradient>
+    <linearGradient id="shardWarm" x1="420" y1="458" x2="582" y2="776" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFC57E" stop-opacity="0.95" />
+      <stop offset="1" stop-color="#5E231A" stop-opacity="0.12" />
+    </linearGradient>
+    <filter id="softBlur" x="-200" y="-200" width="1800" height="1300" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="42" />
+    </filter>
+    <filter id="faceGlow" x="114" y="60" width="712" height="758" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1400" height="900" rx="36" fill="url(#bg)" />
+  <ellipse cx="308" cy="410" rx="302" ry="278" fill="url(#blueGlow)" />
+  <ellipse cx="478" cy="204" rx="212" ry="196" fill="url(#violetGlow)" />
+  <ellipse cx="562" cy="598" rx="252" ry="214" fill="url(#warmGlow)" />
+
+  <g opacity="0.84">
+    <circle cx="136" cy="228" r="5" fill="#A8F2FF" />
+    <circle cx="188" cy="318" r="8" fill="#FFD2A2" />
+    <circle cx="244" cy="144" r="6" fill="#95E6FF" />
+    <circle cx="228" cy="502" r="5" fill="#A9EBFF" />
+    <circle cx="306" cy="686" r="7" fill="#7EDCFF" />
+    <circle cx="404" cy="104" r="5" fill="#B8F4FF" />
+    <circle cx="492" cy="120" r="4" fill="#FFD5B0" />
+    <circle cx="556" cy="164" r="6" fill="#8DDCFF" />
+    <circle cx="616" cy="268" r="7" fill="#83E8FF" />
+    <circle cx="642" cy="566" r="6" fill="#FFA86A" />
+    <circle cx="1120" cy="186" r="4" fill="#BEEFFF" />
+    <circle cx="1242" cy="712" r="5" fill="#FFC68A" />
+    <circle cx="1184" cy="606" r="7" fill="#91E8FF" />
+    <circle cx="1318" cy="482" r="5" fill="#FFD7A7" />
+  </g>
+
+  <g opacity="0.42" filter="url(#softBlur)">
+    <circle cx="310" cy="324" r="24" fill="#8FE9FF" />
+    <circle cx="482" cy="236" r="26" fill="#D4C7FF" />
+    <circle cx="560" cy="532" r="30" fill="#FF9E62" />
+    <circle cx="1190" cy="682" r="22" fill="#7CE8FF" />
+  </g>
+
+  <g filter="url(#faceGlow)">
+    <polygon points="214,302 278,228 360,196 404,254 346,330 254,368" fill="url(#shardBlue)" fill-opacity="0.28" stroke="rgba(173,233,255,0.24)" />
+    <polygon points="180,412 272,378 340,448 254,532 166,496" fill="url(#shardBlue)" fill-opacity="0.24" stroke="rgba(148,228,255,0.22)" />
+    <polygon points="218,566 318,510 392,612 278,704 190,648" fill="url(#shardBlue)" fill-opacity="0.22" stroke="rgba(138,219,255,0.18)" />
+    <polygon points="386,638 490,586 550,710 448,790 354,734" fill="url(#shardWarm)" fill-opacity="0.24" stroke="rgba(255,206,152,0.2)" />
+
+    <polygon points="314,190 424,156 530,180 598,252 624,352 606,436 566,498 508,536 454,568 404,558 368,500 344,408 344,300" fill="url(#faceCool)" fill-opacity="0.26" stroke="rgba(165,229,255,0.18)" />
+    <polygon points="430,154 516,174 584,238 612,318 602,384 548,420 518,404 536,352 530,280 484,208" fill="url(#faceWarm)" fill-opacity="0.46" stroke="rgba(255,212,170,0.22)" />
+    <polygon points="344,290 402,238 480,224 532,244 542,298 514,344 464,376 404,372 358,334" fill="rgba(182,232,255,0.22)" stroke="rgba(196,236,255,0.24)" />
+    <polygon points="468,224 546,246 586,308 590,364 558,410 514,434 474,424 504,370 500,308" fill="rgba(255,199,139,0.38)" stroke="rgba(255,217,171,0.24)" />
+    <polygon points="402,372 466,378 512,346 506,404 474,452 424,472 380,456 364,408" fill="rgba(104,170,255,0.22)" stroke="rgba(180,230,255,0.18)" />
+    <polygon points="474,452 518,430 558,440 562,476 530,516 486,528 462,502" fill="rgba(241,154,87,0.36)" stroke="rgba(255,213,178,0.16)" />
+    <polygon points="456,528 490,520 534,516 548,560 522,624 476,658 430,650 410,606" fill="rgba(232,128,61,0.28)" stroke="rgba(255,196,142,0.14)" />
+    <polygon points="356,456 404,474 456,528 410,606 354,612 318,540 320,486" fill="rgba(134,219,255,0.16)" stroke="rgba(166,230,255,0.14)" />
+    <polygon points="328,538 354,612 414,668 378,732 298,682 274,606" fill="rgba(120,217,255,0.16)" stroke="rgba(160,228,255,0.12)" />
+    <polygon points="414,668 476,658 514,708 470,788 392,738" fill="rgba(255,170,102,0.22)" stroke="rgba(255,201,156,0.12)" />
+
+    <polygon points="510,260 562,296 584,340 578,382 556,406 526,404 532,356 524,314" fill="rgba(255,229,190,0.46)" />
+    <polygon points="538,406 574,396 604,408 596,432 564,448 532,438" fill="rgba(255,214,168,0.4)" />
+    <polygon points="564,448 606,440 626,450 618,470 588,484 554,476" fill="rgba(255,189,130,0.34)" />
+    <polygon points="582,484 626,480 640,494 624,510 590,520 562,512" fill="rgba(230,142,83,0.3)" />
+
+    <polygon points="470,342 508,352 504,370 470,374 446,366" fill="rgba(9,18,33,0.38)" />
+    <polygon points="446,366 470,374 458,392 426,394 418,378" fill="rgba(238,246,255,0.18)" />
+    <polygon points="498,466 544,472 528,490 496,494 482,480" fill="rgba(17,12,20,0.34)" />
+    <polygon points="496,494 526,496 512,512 486,516 474,504" fill="rgba(255,228,198,0.22)" />
+  </g>
+
+  <g opacity="0.68">
+    <circle cx="240" cy="278" r="2.2" fill="#E7FCFF" />
+    <circle cx="276" cy="338" r="2.6" fill="#B2EFFF" />
+    <circle cx="332" cy="244" r="1.8" fill="#C8F6FF" />
+    <circle cx="372" cy="430" r="2.2" fill="#A7EFFF" />
+    <circle cx="460" cy="322" r="2.1" fill="#FFF2D6" />
+    <circle cx="538" cy="280" r="2" fill="#FFD9B6" />
+    <circle cx="566" cy="356" r="2.6" fill="#FFE3C2" />
+    <circle cx="520" cy="572" r="2.4" fill="#FFD0A5" />
+    <circle cx="420" cy="612" r="2.4" fill="#B9F2FF" />
+    <circle cx="274" cy="624" r="2.2" fill="#8CE2FF" />
+    <circle cx="182" cy="548" r="2.1" fill="#A7EEFF" />
+    <circle cx="1166" cy="220" r="2.2" fill="#A8EBFF" />
+    <circle cx="1218" cy="352" r="2" fill="#C0F1FF" />
+    <circle cx="1276" cy="640" r="2.4" fill="#FFCE98" />
+  </g>
+</svg>
