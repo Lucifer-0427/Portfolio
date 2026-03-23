@@ -56,6 +56,12 @@ const skillNodes = [
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
   },
   {
+    label: "JavaScript",
+    category: "Frontend",
+    accent: "rgba(250, 204, 21, 0.96)",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+  },
+  {
     label: "Node.js",
     category: "Backend",
     accent: "rgba(74, 222, 128, 0.95)",
@@ -72,6 +78,30 @@ const skillNodes = [
     category: "Database",
     accent: "rgba(52, 211, 153, 0.95)",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+  },
+  {
+    label: "Python",
+    category: "Backend",
+    accent: "rgba(96, 165, 250, 0.95)",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+  },
+  {
+    label: "C#",
+    category: "Programming",
+    accent: "rgba(192, 132, 252, 0.95)",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
+  },
+  {
+    label: "C++",
+    category: "Programming",
+    accent: "rgba(129, 140, 248, 0.95)",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg",
+  },
+  {
+    label: "C",
+    category: "Programming",
+    accent: "rgba(148, 163, 184, 0.95)",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
   },
   {
     label: "Git",
@@ -102,6 +132,18 @@ const skillNodes = [
     category: "Testing",
     accent: "rgba(251, 146, 60, 0.95)",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg",
+  },
+  {
+    label: "GitHub",
+    category: "Workflow",
+    accent: "rgba(244, 244, 245, 0.94)",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+  },
+  {
+    label: "MySQL",
+    category: "Database",
+    accent: "rgba(56, 189, 248, 0.95)",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
   },
 ];
 

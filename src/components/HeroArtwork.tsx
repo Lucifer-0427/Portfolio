@@ -27,17 +27,18 @@ export function HeroArtwork() {
       initial={{ opacity: 0, scale: 0.96, y: 20 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className="relative isolate min-h-[24rem] overflow-hidden rounded-[2.4rem] border border-white/8 bg-transparent p-2 sm:min-h-[30rem] lg:min-h-[38rem]"
+      className="relative isolate min-h-[21rem] overflow-hidden rounded-[2.2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.86),rgba(2,6,23,0.92))] p-2 shadow-[0_28px_80px_rgba(2,6,23,0.42)] sm:min-h-[24rem] lg:min-h-[30rem]"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_26%_34%,rgba(34,211,238,0.18),transparent_18rem),radial-gradient(circle_at_58%_48%,rgba(251,146,60,0.14),transparent_16rem),radial-gradient(circle_at_44%_20%,rgba(139,92,246,0.14),transparent_15rem)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_55%)]" />
+      <div className="absolute inset-[1.1rem] rounded-[1.5rem] border border-white/6 bg-[linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0))]" />
 
       <motion.div
         animate={{ y: [0, -4, 0] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         className="relative h-full min-h-[inherit]"
       >
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.08)_1px,transparent_1px)] bg-[size:42px_42px] opacity-35" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.08)_1px,transparent_1px)] bg-[size:42px_42px] opacity-28" />
         <div className="absolute bottom-[10%] right-[-6%] h-[28%] w-[48%] rounded-full bg-cyan-400/10 blur-3xl" />
         <div className="absolute top-[8%] left-[6%] h-[20%] w-[22%] rounded-full bg-violet-500/10 blur-3xl" />
 
