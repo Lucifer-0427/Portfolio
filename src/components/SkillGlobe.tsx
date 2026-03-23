@@ -323,8 +323,8 @@ export function SkillGlobe({ skills }: SkillGlobeProps) {
         .map((point, index) => {
           const rotated = rotatePoint(point, state.rotationX, state.rotationY);
           const depth = (rotated.z + 1) / 2;
-          const scale = isCoarsePointer ? 0.62 + depth * 0.34 : 0.64 + depth * 0.4;
-          const radius = (isCoarsePointer ? 18 : 21) * scale;
+          const scale = isCoarsePointer ? 0.72 + depth * 0.38 : 0.78 + depth * 0.46;
+          const radius = (isCoarsePointer ? 24 : 30) * scale;
 
           return {
             ...skills[index],
@@ -348,37 +348,37 @@ export function SkillGlobe({ skills }: SkillGlobeProps) {
         context.globalAlpha = skill.opacity;
         context.translate(skill.x, skill.y);
 
-        const gradient = context.createRadialGradient(0, 0, 0, 0, 0, skill.radius * 1.4);
+        const gradient = context.createRadialGradient(0, 0, 0, 0, 0, skill.radius * 1.55);
         gradient.addColorStop(0, skill.accent);
         gradient.addColorStop(1, "rgba(15, 23, 42, 0)");
         context.fillStyle = gradient;
         context.beginPath();
-        context.arc(0, 0, skill.radius * 1.15, 0, Math.PI * 2);
+        context.arc(0, 0, skill.radius * 1.22, 0, Math.PI * 2);
         context.fill();
 
         context.fillStyle = "rgba(8, 15, 34, 0.92)";
         context.beginPath();
-        context.arc(0, 0, skill.radius * 0.72, 0, Math.PI * 2);
+        context.arc(0, 0, skill.radius * 0.86, 0, Math.PI * 2);
         context.fill();
 
         context.strokeStyle = isActive ? "rgba(255,255,255,0.88)" : "rgba(255,255,255,0.18)";
         context.lineWidth = isActive ? 1.3 : 1;
         context.beginPath();
-        context.arc(0, 0, skill.radius * 0.72, 0, Math.PI * 2);
+        context.arc(0, 0, skill.radius * 0.86, 0, Math.PI * 2);
         context.stroke();
 
         if (icon?.complete) {
-          const iconSize = skill.radius * 0.92;
+          const iconSize = skill.radius * 1.45;
           context.save();
           context.beginPath();
-          context.arc(0, 0, skill.radius * 0.62, 0, Math.PI * 2);
+          context.arc(0, 0, skill.radius * 0.72, 0, Math.PI * 2);
           context.clip();
           context.drawImage(icon, -iconSize / 2, -iconSize / 2, iconSize, iconSize);
           context.restore();
         } else {
           context.fillStyle = skill.accent;
           context.beginPath();
-          context.arc(0, 0, skill.radius * 0.34, 0, Math.PI * 2);
+          context.arc(0, 0, skill.radius * 0.46, 0, Math.PI * 2);
           context.fill();
         }
 
@@ -386,7 +386,7 @@ export function SkillGlobe({ skills }: SkillGlobeProps) {
           context.strokeStyle = skill.accent;
           context.lineWidth = 1.4;
           context.beginPath();
-          context.arc(0, 0, skill.radius * 0.98, 0, Math.PI * 2);
+          context.arc(0, 0, skill.radius * 1.08, 0, Math.PI * 2);
           context.stroke();
         }
 
