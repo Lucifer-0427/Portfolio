@@ -433,9 +433,9 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
 
         dragState.current.lastX = event.clientX;
         dragState.current.lastY = event.clientY;
-        dragState.current.targetRotationY += dx * dragScale;
+        dragState.current.targetRotationY -= dx * dragScale;
         dragState.current.targetRotationX += dy * dragScale;
-        dragState.current.velocityX = dx * velocityScale;
+        dragState.current.velocityX = -dx * velocityScale;
         dragState.current.velocityY = dy * velocityScale;
         return;
       }

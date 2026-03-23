@@ -571,6 +571,7 @@ li {
 .project-showcase,
 .project-catalog {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
 }
 
 .project-tile,
@@ -582,6 +583,7 @@ li {
   display: grid;
   gap: 0.9rem;
   min-height: 100%;
+  align-content: start;
 }
 
 .project-tile__head,
@@ -600,6 +602,10 @@ li {
 .project-catalog__stack {
   color: var(--accent-deep);
   font-weight: 800;
+}
+
+.project-catalog__item {
+  align-content: start;
 }
 
 .subpage-hero {
