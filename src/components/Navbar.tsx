@@ -38,15 +38,17 @@ export function Navbar() {
       initial={{ opacity: 0, y: -18 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-      className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/75 backdrop-blur-xl"
+      className="sticky top-0 z-50 bg-transparent"
     >
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:px-8">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-6 sm:px-6 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:px-8">
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary navigation">
-          {links.map((link) => (
+          {links.map((link, index) => (
             <Link
               key={link.label}
               href={link.href}
-              className="rounded-full px-4 py-2 text-sm font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white"
+              className={`px-4 py-2 text-[1.05rem] font-medium tracking-[0.02em] text-slate-200 transition-colors hover:text-white ${
+                index === 0 ? "border-b border-white/70" : ""
+              }`}
             >
               {link.label}
             </Link>
@@ -55,13 +57,13 @@ export function Navbar() {
 
         <Link
           href="/"
-          className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/5 font-display text-sm font-semibold tracking-[0.3em] text-white lg:justify-self-center"
+          className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.03] font-display text-sm font-semibold tracking-[0.3em] text-white lg:justify-self-center"
           aria-label="Harsh Panchal home"
         >
           HP
         </Link>
 
-        <div className="hidden items-center justify-end gap-2 lg:flex">
+        <div className="hidden items-center justify-end gap-4 lg:flex">
           {socials.map((social) => {
             const Icon = social.icon;
             return (
@@ -71,9 +73,9 @@ export function Navbar() {
                 target={social.href.startsWith("http") ? "_blank" : undefined}
                 rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 aria-label={social.label}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-300 transition-colors hover:border-cyan-300/30 hover:text-cyan-200"
+                className="inline-flex h-10 w-10 items-center justify-center text-slate-100 transition-colors hover:text-cyan-200"
               >
-                <Icon className="h-4 w-4" />
+                <Icon className="h-5 w-5" />
               </a>
             );
           })}

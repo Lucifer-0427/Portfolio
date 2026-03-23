@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { Navbar } from "@/components/Navbar";
 import { SectionHeading } from "@/components/SectionHeading";
+import { SkillGlobe } from "@/components/SkillGlobe";
 
 const capabilityGroups = [
   {
@@ -29,19 +30,34 @@ const capabilityGroups = [
   },
 ];
 
+const skillNodes = [
+  { label: "Next.js", category: "Frontend", accent: "rgba(56, 189, 248, 0.95)" },
+  { label: "React", category: "Frontend", accent: "rgba(96, 165, 250, 0.95)" },
+  { label: "Tailwind", category: "Frontend", accent: "rgba(34, 211, 238, 0.95)" },
+  { label: "Node.js", category: "Backend", accent: "rgba(74, 222, 128, 0.95)" },
+  { label: "Express", category: "Backend", accent: "rgba(148, 163, 184, 0.95)" },
+  { label: "MongoDB", category: "Database", accent: "rgba(52, 211, 153, 0.95)" },
+  { label: "APIs", category: "Backend", accent: "rgba(129, 140, 248, 0.95)" },
+  { label: "Auth", category: "Backend", accent: "rgba(251, 146, 60, 0.95)" },
+  { label: "TCP/IP", category: "Networking", accent: "rgba(244, 114, 182, 0.95)" },
+  { label: "Routing", category: "Networking", accent: "rgba(250, 204, 21, 0.95)" },
+  { label: "Debugging", category: "Systems", accent: "rgba(248, 250, 252, 0.92)" },
+  { label: "Monitoring", category: "Networking", accent: "rgba(45, 212, 191, 0.95)" },
+];
+
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-[#050816] text-white">
       <Navbar />
 
-      <main className="mx-auto flex w-full max-w-7xl flex-col gap-20 px-4 pb-16 pt-8 sm:px-6 lg:px-8 lg:gap-24 lg:pt-10">
+      <main className="mx-auto flex w-full max-w-7xl flex-col gap-20 px-4 pb-16 pt-2 sm:px-6 lg:px-8 lg:gap-24 lg:pt-2">
         <Hero />
 
         <section id="about" className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
           <SectionHeading
             eyebrow="About"
             title="Full-stack thinking with real operational awareness."
-            description="I’m most interested in building complete systems. That means frontend work that feels intentional, backend logic that behaves reliably, and the kind of technical judgment that comes from understanding how the whole stack fits together."
+            description="I'm most interested in building complete systems. That means frontend work that feels intentional, backend logic that behaves reliably, and the kind of technical judgment that comes from understanding how the whole stack fits together."
           />
 
           <div className="grid gap-4 sm:grid-cols-2">
@@ -62,7 +78,7 @@ export default function HomePage() {
             <div className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6 sm:col-span-2">
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-orange-200">Current direction</p>
               <p className="mt-4 text-sm leading-7 text-slate-300">
-                I’m building public work gradually and only showcasing projects that are actually on
+                I'm building public work gradually and only showcasing projects that are actually on
                 GitHub. That keeps the portfolio honest and lets every case study carry real technical weight.
               </p>
             </div>
@@ -73,9 +89,18 @@ export default function HomePage() {
 
         <section className="space-y-10">
           <SectionHeading
+            eyebrow="Skills Globe"
+            title="The interactive globe is back."
+            description="You wanted to keep this piece, and I agree it adds personality without turning the portfolio into visual clutter. It now sits as a focused technical section instead of being mixed into the old theme."
+          />
+          <SkillGlobe skills={skillNodes} />
+        </section>
+
+        <section className="space-y-10">
+          <SectionHeading
             eyebrow="Capabilities"
             title="Frontend, backend, and networking in one technical profile."
-            description="I don’t want the portfolio to read like I only style interfaces. The real value is being able to move between product experience, backend behavior, and systems thinking without losing coherence."
+            description="I don't want the portfolio to read like I only style interfaces. The real value is being able to move between product experience, backend behavior, and systems thinking without losing coherence."
           />
 
           <div className="grid gap-5 lg:grid-cols-3">
@@ -114,7 +139,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Articles"
             title="Write-ups will be added as more public projects ship."
-            description="I’m not filling this section with fake thought pieces. As new GitHub-backed projects go live, I’ll add architecture notes, debugging write-ups, and technical breakdowns that reflect real work."
+            description="I'm not filling this section with fake thought pieces. As new GitHub-backed projects go live, I'll add architecture notes, debugging write-ups, and technical breakdowns that reflect real work."
           />
         </section>
 
