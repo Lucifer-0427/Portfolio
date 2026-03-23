@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, FolderGit2 } from "lucide-react";
+import { ArrowLeft, ExternalLink, FolderGit2 } from "lucide-react";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -65,6 +65,18 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                   <ArrowLeft className="h-4 w-4" />
                   Back to Projects
                 </Link>
+
+                {project.liveUrl ? (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-slate-950/85 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-950"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    Live Demo
+                  </a>
+                ) : null}
 
                 <a
                   href={project.githubUrl}

@@ -49,9 +49,10 @@ export const projects: Project[] = [
     fullDescription:
       "IntelliGrocer is a full-stack supermarket platform built to show how connected systems should behave when different users depend on the same operational data. Shoppers browse products, place orders, and see approved offers. Employees manage tasks, schedules, and shelf activity. Managers control inventory, pricing recommendations, staffing, and reports from one coordinated system.",
     category: "Full Stack",
-    status: "In Progress",
+    status: "Live",
     techStack: ["Next.js", "React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
     image: "/projects/intelligrocer.svg",
+    liveUrl: "https://intelli-grocer-rho.vercel.app",
     githubUrl: "https://github.com/Lucifer-0427/IntelliGrocer",
     featured: true,
     features: [

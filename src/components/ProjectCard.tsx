@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowUpRight, FileText, FolderGit2, RadioTower } from "lucide-react";
+import { ArrowUpRight, FileText, FolderGit2, Globe, RadioTower } from "lucide-react";
 import type { Project } from "@/data/projects";
 
 type ProjectCardProps = {
@@ -68,7 +68,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           ))}
         </div>
 
-        <div className="grid gap-3 pt-2 sm:grid-cols-2">
+        <div className="grid gap-3 pt-2 sm:grid-cols-3">
           <Link
             href={`/projects/${project.slug}`}
             className="inline-flex items-center justify-center gap-2 rounded-full border border-white/12 bg-white/5 px-4 py-3 text-sm font-semibold text-white transition-colors hover:border-cyan-300/40 hover:bg-white/10"
@@ -77,15 +77,27 @@ export function ProjectCard({ project }: ProjectCardProps) {
             View Case Study
           </Link>
 
+          {project.liveUrl ? (
             <a
-              href={project.githubUrl}
+              href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-full border border-white/12 bg-white/5 px-4 py-3 text-sm font-semibold text-white transition-colors hover:border-cyan-300/40 hover:bg-white/10"
             >
-              <FolderGit2 className="h-4 w-4" />
-              GitHub
+              <Globe className="h-4 w-4" />
+              Live Demo
             </a>
+          ) : null}
+
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/12 bg-white/5 px-4 py-3 text-sm font-semibold text-white transition-colors hover:border-cyan-300/40 hover:bg-white/10"
+          >
+            <FolderGit2 className="h-4 w-4" />
+            GitHub
+          </a>
         </div>
 
         <div className="inline-flex items-center gap-2 text-sm font-medium text-cyan-300 transition-colors group-hover:text-cyan-200">
