@@ -257,8 +257,8 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
         geometry.centerY,
         geometry.radiusX * 1.28,
       );
-      glowGradient.addColorStop(0, "rgba(104, 211, 255, 0.08)");
-      glowGradient.addColorStop(1, "rgba(104, 211, 255, 0)");
+      glowGradient.addColorStop(0, "rgba(55, 85, 195, 0.12)");
+      glowGradient.addColorStop(1, "rgba(55, 85, 195, 0)");
       context.fillStyle = glowGradient;
       context.beginPath();
       context.ellipse(
@@ -272,7 +272,7 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
       );
       context.fill();
 
-      context.strokeStyle = "rgba(104, 211, 255, 0.2)";
+      context.strokeStyle = "rgba(55, 85, 195, 0.18)";
       context.lineWidth = 1.2;
       context.beginPath();
       context.ellipse(
@@ -286,7 +286,7 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
       );
       context.stroke();
 
-      context.strokeStyle = "rgba(104, 211, 255, 0.08)";
+      context.strokeStyle = "rgba(55, 85, 195, 0.08)";
       context.lineWidth = 1;
       [0.32, -0.28].forEach((tilt) => {
         context.beginPath();
@@ -324,7 +324,7 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
             continue;
           }
 
-          context.strokeStyle = `rgba(104, 211, 255, ${Math.max(
+          context.strokeStyle = `rgba(55, 85, 195, ${Math.max(
             0.05,
             ((a.z + b.z + 2) / 4) * 0.24,
           )})`;
@@ -380,13 +380,13 @@ export function SkillsUniverse({ skills }: SkillsUniverseProps) {
         }
 
         context.shadowBlur = 0;
-        context.fillStyle = isActive ? "rgba(255,255,255,0.98)" : "rgba(233,231,227,0.92)";
+        context.fillStyle = isActive ? "rgba(24, 37, 84, 0.98)" : "rgba(42, 52, 57, 0.92)";
         context.font = `${Math.max(11, Math.round(skill.radius * 0.42))}px var(--font-display), monospace`;
         context.textAlign = "center";
         context.fillText(skill.label, 0, skill.radius + 16);
 
         if (!isCoarsePointer) {
-          context.fillStyle = "rgba(167, 161, 154, 0.88)";
+          context.fillStyle = "rgba(86, 97, 102, 0.88)";
           context.font = `${Math.max(10, Math.round(skill.radius * 0.28))}px var(--font-body), monospace`;
           context.fillText(skill.category, 0, skill.radius + 31);
         }

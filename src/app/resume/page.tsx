@@ -1,74 +1,91 @@
 import Link from "next/link";
-import { githubUrl, linkedInUrl, strengths, targets } from "@/lib/site-data";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+import {
+  emailAddress,
+  githubUrl,
+  linkedInUrl,
+  phoneNumber,
+  strengths,
+  targets,
+} from "@/lib/site-data";
 
 export default function ResumePage() {
   return (
-    <main className="subpage-shell terminal-theme">
-      <section className="subpage-hero terminal-panel">
-        <p className="terminal-label">{"// Resume.md"}</p>
-        <h1>Resume-ready summary designed for quick recruiter scanning.</h1>
-        <p className="section-copy">
-          This page keeps the most useful information visible: your background,
-          technical strengths, target roles, and contact details.
-        </p>
-        <div className="hero-actions">
-          <Link href="/" className="secondary-link">
-            Back Home
-          </Link>
-          <Link href="/projects" className="primary-link">
-            Open Projects
-          </Link>
-        </div>
-      </section>
+    <>
+      <SiteHeader active="resume" />
 
-      <section className="resume-layout">
-        <article className="resume-card terminal-panel">
-          <p className="terminal-label">{"// Profile"}</p>
-          <h2>Harsh Panchal</h2>
+      <main className="page-shell page-stack">
+        <section className="subpage-hero">
+          <span className="eyebrow">Resume</span>
+          <h1>Quick recruiter summary with the details that matter most.</h1>
           <p>
-            Computer Programming diploma graduate focused on troubleshooting,
-            technical support, and practical software problem solving. Looking
-            for entry-level opportunities in IT support, help desk, service
-            desk, and technical support roles.
+            This page keeps the signal high: background, strengths, target roles, and the kind
+            of work I want to keep growing into.
           </p>
-        </article>
+          <div className="action-row">
+            <Link href="/" className="button button--secondary">
+              Back Home
+            </Link>
+            <Link href="/projects" className="button button--primary">
+              Open Projects
+            </Link>
+          </div>
+        </section>
 
-        <article className="resume-card terminal-panel">
-          <p className="terminal-label">{"// Education"}</p>
-          <h2>Computer Programming Diploma</h2>
-          <p>Graduated in 2025</p>
-        </article>
+        <section className="resume-grid">
+          <article className="editorial-card">
+            <span className="section-kicker">Profile</span>
+            <h2>Harsh Panchal</h2>
+            <p>
+              Computer Programming graduate with a strong interest in technical support,
+              full-stack development, debugging, and user-aware system design. I enjoy
+              practical work that improves workflows and makes software easier to trust.
+            </p>
+          </article>
 
-        <article className="resume-card terminal-panel">
-          <p className="terminal-label">{"// Technical strengths"}</p>
-          <ul className="bullet-list">
-            {strengths.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </article>
+          <article className="editorial-card editorial-card--soft">
+            <span className="section-kicker">Education</span>
+            <h2>Computer Programming Diploma</h2>
+            <p>Graduated in 2025 and continued building portfolio projects focused on realistic workflows.</p>
+          </article>
 
-        <article className="resume-card terminal-panel">
-          <p className="terminal-label">{"// Target roles"}</p>
-          <ul className="bullet-list">
-            {targets.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </article>
+          <article className="editorial-card">
+            <span className="section-kicker">Technical strengths</span>
+            <ul className="plain-list">
+              {strengths.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
 
-        <article className="resume-card terminal-panel">
-          <p className="terminal-label">{"// Contact"}</p>
-          <a href="mailto:harshpanchal952@gmail.com">harshpanchal952@gmail.com</a>
-          <a href="tel:6475942795">647-594-2795</a>
-          <a href={githubUrl} target="_blank" rel="noreferrer">
-            GitHub
-          </a>
-          <a href={linkedInUrl} target="_blank" rel="noreferrer">
-            LinkedIn
-          </a>
-        </article>
-      </section>
-    </main>
+          <article className="editorial-card editorial-card--soft">
+            <span className="section-kicker">Target roles</span>
+            <ul className="plain-list">
+              {targets.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+
+          <article className="editorial-card resume-contact">
+            <span className="section-kicker">Contact</span>
+            <h2>Reach out directly.</h2>
+            <div className="contact-links contact-links--stack">
+              <a href={`mailto:${emailAddress}`}>{emailAddress}</a>
+              <a href={`tel:${phoneNumber.replace(/-/g, "")}`}>{phoneNumber}</a>
+              <a href={linkedInUrl} target="_blank" rel="noreferrer">
+                LinkedIn
+              </a>
+              <a href={githubUrl} target="_blank" rel="noreferrer">
+                GitHub
+              </a>
+            </div>
+          </article>
+        </section>
+      </main>
+
+      <SiteFooter />
+    </>
   );
 }

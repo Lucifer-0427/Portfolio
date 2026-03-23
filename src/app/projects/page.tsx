@@ -1,97 +1,124 @@
 import Link from "next/link";
+import type { CSSProperties } from "react";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
 import { githubUrl, projects } from "@/lib/site-data";
 
 export default function ProjectsPage() {
   const featuredProject = projects[0];
 
   return (
-    <main className="subpage-shell terminal-theme">
-      <section className="subpage-hero terminal-panel">
-        <p className="terminal-label">{"// Projects.json"}</p>
-        <h1>Work samples organized like a clean technical knowledge base.</h1>
-        <p className="section-copy">
-          This page focuses on clarity: what each project is, what it
-          demonstrates, and why it matters for IT support and technical work.
-        </p>
-        <div className="hero-actions">
-          <Link href="/" className="secondary-link">
-            Back Home
-          </Link>
-          <Link href="/resume" className="primary-link">
-            Open Resume
-          </Link>
-        </div>
-      </section>
+    <>
+      <SiteHeader active="projects" />
 
-      <section className="featured-case-study">
-        <div className="featured-case-study__main terminal-panel">
-          <p className="terminal-label">{"// Featured case study"}</p>
-          <h2>{featuredProject.title}</h2>
-          <p className="section-copy">{featuredProject.summary}</p>
-          <p className="project-stack">{featuredProject.stack}</p>
-          <ul className="bullet-list">
-            {featuredProject.highlights.map((highlight) => (
-              <li key={highlight}>{highlight}</li>
-            ))}
-          </ul>
-          <div className="project-actions">
-            <Link href={`/projects/${featuredProject.slug}`} className="primary-link">
-              Open Project Page
-            </Link>
-            <a href={featuredProject.repoUrl} target="_blank" rel="noreferrer" className="secondary-link">
-              View on GitHub
-            </a>
-          </div>
-        </div>
-
-        <aside className="live-demo-card terminal-panel">
-          <p className="terminal-label">{"// Demo status"}</p>
-          <h2>Help desk demo direction</h2>
+      <main className="page-shell page-stack">
+        <section className="subpage-hero">
+          <span className="eyebrow">Projects</span>
+          <h1>Case studies designed to show how I think, not just what I built.</h1>
           <p>
-            This project is the strongest fit for a live demo because it mirrors
-            real intake, triage, and support queue workflow.
+            This page focuses on project quality, system reasoning, and the practical decisions
+            behind each build. The goal is to make the work feel clear, grounded, and recruiter-friendly.
           </p>
-          <span className="status-pill status-pill--green">Deployable web demo next</span>
-        </aside>
-      </section>
+          <div className="action-row">
+            <Link href="/" className="button button--secondary">
+              Back Home
+            </Link>
+            <Link href="/resume" className="button button--primary">
+              Open Resume
+            </Link>
+          </div>
+        </section>
 
-      <section className="project-grid">
-        {projects.slice(1).map((project) => (
-          <article className="project-card terminal-panel" key={project.title}>
-            <div className="project-header">
-              <span className="project-label">{project.label}</span>
-              <h3>{project.title}</h3>
+        <section
+          className="project-spotlight"
+          style={{ "--project-accent": featuredProject.accent } as CSSProperties}
+        >
+          <div className="project-spotlight__main">
+            <span className="project-pill">Flagship Project</span>
+            <h2>{featuredProject.title}</h2>
+            <p>{featuredProject.detail}</p>
+            <div className="project-meta">
+              <span>{featuredProject.role}</span>
+              <span>{featuredProject.timeline}</span>
+              <span>{featuredProject.category}</span>
             </div>
-            <p className="project-summary">{project.summary}</p>
-            <p className="project-stack">{project.stack}</p>
-            <ul className="bullet-list compact">
-              {project.highlights.map((highlight) => (
+            <ul className="plain-list plain-list--project">
+              {featuredProject.highlights.map((highlight) => (
                 <li key={highlight}>{highlight}</li>
               ))}
             </ul>
-            <div className="project-actions">
-              <Link href={`/projects/${project.slug}`} className="secondary-link">
-                View Project
+            <div className="action-row">
+              <Link href={`/projects/${featuredProject.slug}`} className="button button--primary">
+                Open Case Study
               </Link>
-              <a href={project.repoUrl} target="_blank" rel="noreferrer" className="secondary-link">
-                GitHub
+              <a
+                href={featuredProject.repoUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="button button--secondary"
+              >
+                View on GitHub
               </a>
             </div>
-          </article>
-        ))}
-      </section>
+          </div>
 
-      <section className="glass-panel project-links-note">
-        <p className="terminal-label">{"// Repositories"}</p>
-        <h2>Project source links can point directly to each repository.</h2>
-        <p className="section-copy">
-          Right now the GitHub buttons use your main profile so the interaction is already live.
-          Once you give me the exact repo links, I can connect each project card to its own repository.
-        </p>
-        <a href={githubUrl} target="_blank" rel="noreferrer" className="secondary-link">
-          Open GitHub Profile
-        </a>
-      </section>
-    </main>
+          <aside className="project-spotlight__side">
+            <div className="meta-panel">
+              <span className="section-kicker">Status</span>
+              <p>{featuredProject.liveStatus}</p>
+            </div>
+            <div className="meta-panel">
+              <span className="section-kicker">Core capability</span>
+              <strong>{featuredProject.capabilities[0]}</strong>
+            </div>
+          </aside>
+        </section>
+
+        <section className="project-catalog">
+          {projects.slice(1).map((project) => (
+            <article
+              key={project.slug}
+              className="project-catalog__item"
+              style={{ "--project-accent": project.accent } as CSSProperties}
+            >
+              <div>
+                <span className="project-pill">{project.label}</span>
+                <h3>{project.title}</h3>
+              </div>
+              <p>{project.summary}</p>
+              <p className="project-catalog__stack">{project.stack}</p>
+              <div className="project-meta">
+                <span>{project.role}</span>
+                <span>{project.category}</span>
+              </div>
+              <div className="action-row action-row--compact">
+                <Link href={`/projects/${project.slug}`} className="text-link">
+                  View Case Study
+                </Link>
+                <a href={project.repoUrl} target="_blank" rel="noreferrer" className="text-link">
+                  GitHub
+                </a>
+              </div>
+            </article>
+          ))}
+        </section>
+
+        <section className="repository-note">
+          <div>
+            <span className="section-kicker">Repositories</span>
+            <h2>Every project can point directly to source once each repo is public.</h2>
+            <p>
+              IntelliGrocer already links to its own repository. The other cards can stay connected
+              to your main profile until you decide to publish each project separately.
+            </p>
+          </div>
+          <a href={githubUrl} target="_blank" rel="noreferrer" className="button button--secondary">
+            Open GitHub Profile
+          </a>
+        </section>
+      </main>
+
+      <SiteFooter />
+    </>
   );
 }
