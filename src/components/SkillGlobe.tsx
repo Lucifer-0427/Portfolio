@@ -105,7 +105,7 @@ export function SkillGlobe({ skills }: SkillGlobeProps) {
 
   const basePoints = useMemo(() => buildSpherePoints(skills.length), [skills.length]);
   const meshPoints = useMemo(
-    () => buildMeshPoints(isCoarsePointer ? 18 : 34),
+    () => buildMeshPoints(isCoarsePointer ? 16 : 24),
     [isCoarsePointer],
   );
 
@@ -231,7 +231,7 @@ export function SkillGlobe({ skills }: SkillGlobeProps) {
       );
       context.fill();
 
-      context.strokeStyle = "rgba(125, 211, 252, 0.16)";
+      context.strokeStyle = "rgba(125, 211, 252, 0.14)";
       context.lineWidth = 1.1;
       context.beginPath();
       context.ellipse(
@@ -245,7 +245,7 @@ export function SkillGlobe({ skills }: SkillGlobeProps) {
       );
       context.stroke();
 
-      context.strokeStyle = "rgba(148, 163, 184, 0.08)";
+      context.strokeStyle = "rgba(148, 163, 184, 0.06)";
       [0.34, -0.28].forEach((tilt) => {
         context.beginPath();
         context.ellipse(
@@ -269,7 +269,7 @@ export function SkillGlobe({ skills }: SkillGlobeProps) {
         };
       });
 
-      context.lineWidth = isCoarsePointer ? 0.65 : 0.75;
+      context.lineWidth = isCoarsePointer ? 0.55 : 0.65;
       for (let i = 0; i < rotatedMesh.length; i += 1) {
         for (let j = i + 1; j < rotatedMesh.length; j += 1) {
           const a = rotatedMesh[i];
@@ -277,14 +277,14 @@ export function SkillGlobe({ skills }: SkillGlobeProps) {
           const dx = a.x - b.x;
           const dy = a.y - b.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
-          const threshold = isCoarsePointer ? geometry.radiusX * 0.76 : geometry.radiusX * 0.72;
+          const threshold = isCoarsePointer ? geometry.radiusX * 0.72 : geometry.radiusX * 0.64;
           if (distance > threshold) {
             continue;
           }
 
           context.strokeStyle = `rgba(56, 189, 248, ${Math.max(
-            0.04,
-            ((a.z + b.z + 2) / 4) * 0.22,
+            0.02,
+            ((a.z + b.z + 2) / 4) * 0.16,
           )})`;
           context.beginPath();
           context.moveTo(a.x, a.y);
@@ -297,8 +297,8 @@ export function SkillGlobe({ skills }: SkillGlobeProps) {
         .map((point, index) => {
           const rotated = rotatePoint(point, state.rotationX, state.rotationY);
           const depth = (rotated.z + 1) / 2;
-          const scale = isCoarsePointer ? 0.66 + depth * 0.4 : 0.7 + depth * 0.46;
-          const radius = (isCoarsePointer ? 20 : 25) * scale;
+          const scale = isCoarsePointer ? 0.62 + depth * 0.34 : 0.64 + depth * 0.4;
+          const radius = (isCoarsePointer ? 18 : 21) * scale;
 
           return {
             ...skills[index],
@@ -342,15 +342,17 @@ export function SkillGlobe({ skills }: SkillGlobeProps) {
           context.stroke();
         }
 
-        context.fillStyle = isActive ? "rgba(255,255,255,0.98)" : "rgba(226,232,240,0.92)";
-        context.font = `${Math.max(11, Math.round(skill.radius * 0.5))}px var(--font-display), sans-serif`;
-        context.textAlign = "center";
-        context.fillText(skill.label, 0, skill.radius + 16);
+        if (isActive) {
+          context.fillStyle = "rgba(255,255,255,0.98)";
+          context.font = `${Math.max(11, Math.round(skill.radius * 0.54))}px var(--font-display), sans-serif`;
+          context.textAlign = "center";
+          context.fillText(skill.label, 0, skill.radius + 18);
 
-        if (!isCoarsePointer) {
-          context.fillStyle = "rgba(148, 163, 184, 0.9)";
-          context.font = `${Math.max(10, Math.round(skill.radius * 0.3))}px var(--font-body), sans-serif`;
-          context.fillText(skill.category, 0, skill.radius + 31);
+          if (!isCoarsePointer) {
+            context.fillStyle = "rgba(148, 163, 184, 0.88)";
+            context.font = `${Math.max(10, Math.round(skill.radius * 0.34))}px var(--font-body), sans-serif`;
+            context.fillText(skill.category, 0, skill.radius + 33);
+          }
         }
 
         context.restore();
@@ -396,9 +398,9 @@ export function SkillGlobe({ skills }: SkillGlobeProps) {
         dragState.current.lastX = event.clientX;
         dragState.current.lastY = event.clientY;
         dragState.current.targetRotationY -= dx * dragScale;
-        dragState.current.targetRotationX += dy * dragScale;
+        dragState.current.targetRotationX -= dy * dragScale;
         dragState.current.velocityX = -dx * velocityScale;
-        dragState.current.velocityY = dy * velocityScale;
+        dragState.current.velocityY = -dy * velocityScale;
         return;
       }
 
@@ -448,7 +450,7 @@ export function SkillGlobe({ skills }: SkillGlobeProps) {
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-cyan-300">Skills Globe</p>
           <h3 className="mt-2 font-display text-2xl font-semibold tracking-[-0.04em] text-white sm:text-3xl">
-            Interactive skill orbit
+            Interactive skills globe
           </h3>
         </div>
         <p className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-300">
