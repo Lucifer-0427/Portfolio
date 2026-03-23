@@ -31,18 +31,78 @@ const capabilityGroups = [
 ];
 
 const skillNodes = [
-  { label: "Next.js", category: "Frontend", accent: "rgba(56, 189, 248, 0.95)" },
-  { label: "React", category: "Frontend", accent: "rgba(96, 165, 250, 0.95)" },
-  { label: "Tailwind", category: "Frontend", accent: "rgba(34, 211, 238, 0.95)" },
-  { label: "Node.js", category: "Backend", accent: "rgba(74, 222, 128, 0.95)" },
-  { label: "Express", category: "Backend", accent: "rgba(148, 163, 184, 0.95)" },
-  { label: "MongoDB", category: "Database", accent: "rgba(52, 211, 153, 0.95)" },
-  { label: "APIs", category: "Backend", accent: "rgba(129, 140, 248, 0.95)" },
-  { label: "Auth", category: "Backend", accent: "rgba(251, 146, 60, 0.95)" },
-  { label: "TCP/IP", category: "Networking", accent: "rgba(244, 114, 182, 0.95)" },
-  { label: "Routing", category: "Networking", accent: "rgba(250, 204, 21, 0.95)" },
-  { label: "Debugging", category: "Systems", accent: "rgba(248, 250, 252, 0.92)" },
-  { label: "Monitoring", category: "Networking", accent: "rgba(45, 212, 191, 0.95)" },
+  {
+    label: "Next.js",
+    category: "Frontend",
+    accent: "rgba(244, 244, 245, 0.96)",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+  },
+  {
+    label: "React",
+    category: "Frontend",
+    accent: "rgba(96, 165, 250, 0.95)",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  },
+  {
+    label: "Tailwind",
+    category: "Frontend",
+    accent: "rgba(34, 211, 238, 0.95)",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+  },
+  {
+    label: "TypeScript",
+    category: "Frontend",
+    accent: "rgba(59, 130, 246, 0.96)",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+  },
+  {
+    label: "Node.js",
+    category: "Backend",
+    accent: "rgba(74, 222, 128, 0.95)",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+  },
+  {
+    label: "Express",
+    category: "Backend",
+    accent: "rgba(148, 163, 184, 0.95)",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+  },
+  {
+    label: "MongoDB",
+    category: "Database",
+    accent: "rgba(52, 211, 153, 0.95)",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+  },
+  {
+    label: "Git",
+    category: "Workflow",
+    accent: "rgba(251, 146, 60, 0.95)",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+  },
+  {
+    label: "Docker",
+    category: "Infrastructure",
+    accent: "rgba(56, 189, 248, 0.95)",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+  },
+  {
+    label: "Linux",
+    category: "Networking",
+    accent: "rgba(250, 204, 21, 0.95)",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",
+  },
+  {
+    label: "Nginx",
+    category: "Networking",
+    accent: "rgba(74, 222, 128, 0.9)",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg",
+  },
+  {
+    label: "Postman",
+    category: "Testing",
+    accent: "rgba(251, 146, 60, 0.95)",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg",
+  },
 ];
 
 export default function HomePage() {

@@ -6,6 +6,7 @@ type SkillNode = {
   label: string;
   category: string;
   accent: string;
+  icon: string;
 };
 
 type SkillGlobeProps = {
@@ -77,6 +78,7 @@ export function SkillGlobe({ skills }: SkillGlobeProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const animationRef = useRef<number | null>(null);
+  const loadedIconsRef = useRef(new Map<string, HTMLImageElement>());
   const hoveredSkillRef = useRef(skills[0]?.label ?? "");
   const [hoveredSkill, setHoveredSkill] = useState(skills[0]?.label ?? "");
   const [isCoarsePointer, setIsCoarsePointer] = useState(false);
@@ -117,6 +119,30 @@ export function SkillGlobe({ skills }: SkillGlobeProps) {
     mediaQuery.addEventListener("change", sync);
     return () => mediaQuery.removeEventListener("change", sync);
   }, []);
+
+  useEffect(() => {
+    const icons = new Map<string, HTMLImageElement>();
+    let cancelled = false;
+
+    skills.forEach((skill) => {
+      const image = new Image();
+      image.crossOrigin = "anonymous";
+      image.decoding = "async";
+      image.onload = () => {
+        if (!cancelled) {
+          loadedIconsRef.current.set(skill.icon, image);
+        }
+      };
+      image.src = skill.icon;
+      icons.set(skill.icon, image);
+    });
+
+    loadedIconsRef.current = icons;
+
+    return () => {
+      cancelled = true;
+    };
+  }, [skills]);
 
   useEffect(() => {
     const updateGeometry = () => {
@@ -316,6 +342,7 @@ export function SkillGlobe({ skills }: SkillGlobeProps) {
 
       projectedSkills.forEach((skill) => {
         const isActive = hoveredSkillRef.current === skill.label;
+        const icon = loadedIconsRef.current.get(skill.icon);
 
         context.save();
         context.globalAlpha = skill.opacity;
@@ -329,16 +356,37 @@ export function SkillGlobe({ skills }: SkillGlobeProps) {
         context.arc(0, 0, skill.radius * 1.15, 0, Math.PI * 2);
         context.fill();
 
-        context.fillStyle = skill.accent;
+        context.fillStyle = "rgba(8, 15, 34, 0.92)";
         context.beginPath();
-        context.arc(0, 0, skill.radius * 0.48, 0, Math.PI * 2);
+        context.arc(0, 0, skill.radius * 0.72, 0, Math.PI * 2);
         context.fill();
 
-        if (isActive) {
-          context.strokeStyle = "rgba(255,255,255,0.9)";
-          context.lineWidth = 1;
+        context.strokeStyle = isActive ? "rgba(255,255,255,0.88)" : "rgba(255,255,255,0.18)";
+        context.lineWidth = isActive ? 1.3 : 1;
+        context.beginPath();
+        context.arc(0, 0, skill.radius * 0.72, 0, Math.PI * 2);
+        context.stroke();
+
+        if (icon?.complete) {
+          const iconSize = skill.radius * 0.92;
+          context.save();
           context.beginPath();
-          context.arc(0, 0, skill.radius * 0.9, 0, Math.PI * 2);
+          context.arc(0, 0, skill.radius * 0.62, 0, Math.PI * 2);
+          context.clip();
+          context.drawImage(icon, -iconSize / 2, -iconSize / 2, iconSize, iconSize);
+          context.restore();
+        } else {
+          context.fillStyle = skill.accent;
+          context.beginPath();
+          context.arc(0, 0, skill.radius * 0.34, 0, Math.PI * 2);
+          context.fill();
+        }
+
+        if (isActive) {
+          context.strokeStyle = skill.accent;
+          context.lineWidth = 1.4;
+          context.beginPath();
+          context.arc(0, 0, skill.radius * 0.98, 0, Math.PI * 2);
           context.stroke();
         }
 
@@ -398,9 +446,9 @@ export function SkillGlobe({ skills }: SkillGlobeProps) {
         dragState.current.lastX = event.clientX;
         dragState.current.lastY = event.clientY;
         dragState.current.targetRotationY -= dx * dragScale;
-        dragState.current.targetRotationX -= dy * dragScale;
+        dragState.current.targetRotationX += dy * dragScale;
         dragState.current.velocityX = -dx * velocityScale;
-        dragState.current.velocityY = -dy * velocityScale;
+        dragState.current.velocityY = dy * velocityScale;
         return;
       }
 
