@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowUpRight, FileText, FolderGit2, Globe, Lock, RadioTower } from "lucide-react";
+import { ArrowUpRight, FileText, FolderGit2, RadioTower } from "lucide-react";
 import type { Project } from "@/data/projects";
 
 type ProjectCardProps = {
@@ -68,7 +68,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           ))}
         </div>
 
-        <div className="grid gap-3 pt-2 sm:grid-cols-3">
+        <div className="grid gap-3 pt-2 sm:grid-cols-2">
           <Link
             href={`/projects/${project.slug}`}
             className="inline-flex items-center justify-center gap-2 rounded-full border border-white/12 bg-white/5 px-4 py-3 text-sm font-semibold text-white transition-colors hover:border-cyan-300/40 hover:bg-white/10"
@@ -76,23 +76,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <FileText className="h-4 w-4" />
             View Case Study
           </Link>
-
-          {project.liveUrl ? (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/12 bg-white/5 px-4 py-3 text-sm font-semibold text-white transition-colors hover:border-cyan-300/40 hover:bg-white/10"
-            >
-              <Globe className="h-4 w-4" />
-              Live Demo
-            </a>
-          ) : (
-            <span className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-3 text-sm font-semibold text-slate-500">
-              <Lock className="h-4 w-4" />
-              Live Demo
-            </span>
-          )}
 
             <a
               href={project.githubUrl}

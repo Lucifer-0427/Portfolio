@@ -191,9 +191,9 @@ export default function HomePage() {
 
         <section className="space-y-10">
           <SectionHeading
-            eyebrow="Skills Globe"
-            title="The interactive globe is back."
-            description="You wanted to keep this piece, and I agree it adds personality without turning the portfolio into visual clutter. It now sits as a focused technical section instead of being mixed into the old theme."
+            eyebrow="Skills"
+            title="Core tools and technologies."
+            description=""
           />
           <SkillGlobe skills={skillNodes} />
         </section>
@@ -235,14 +235,6 @@ export default function HomePage() {
               );
             })}
           </div>
-        </section>
-
-        <section id="articles" className="rounded-[2rem] border border-white/10 bg-white/[0.04] px-6 py-8 sm:px-8">
-          <SectionHeading
-            eyebrow="Articles"
-            title="Write-ups will be added as more public projects ship."
-            description="I'm not filling this section with fake thought pieces. As new GitHub-backed projects go live, I'll add architecture notes, debugging write-ups, and technical breakdowns that reflect real work."
-          />
         </section>
 
         <Footer />

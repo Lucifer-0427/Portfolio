@@ -390,19 +390,6 @@ export function SkillGlobe({ skills }: SkillGlobeProps) {
           context.stroke();
         }
 
-        if (isActive) {
-          context.fillStyle = "rgba(255,255,255,0.98)";
-          context.font = `${Math.max(11, Math.round(skill.radius * 0.54))}px var(--font-display), sans-serif`;
-          context.textAlign = "center";
-          context.fillText(skill.label, 0, skill.radius + 18);
-
-          if (!isCoarsePointer) {
-            context.fillStyle = "rgba(148, 163, 184, 0.88)";
-            context.font = `${Math.max(10, Math.round(skill.radius * 0.34))}px var(--font-body), sans-serif`;
-            context.fillText(skill.category, 0, skill.radius + 33);
-          }
-        }
-
         context.restore();
       });
 
@@ -494,18 +481,6 @@ export function SkillGlobe({ skills }: SkillGlobeProps) {
 
   return (
     <section className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-4 shadow-2xl shadow-black/20 sm:p-6">
-      <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-cyan-300">Skills Globe</p>
-          <h3 className="mt-2 font-display text-2xl font-semibold tracking-[-0.04em] text-white sm:text-3xl">
-            Interactive skills globe
-          </h3>
-        </div>
-        <p className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-300">
-          Active skill: <span className="font-semibold text-white">{hoveredSkill}</span>
-        </p>
-      </div>
-
       <div
         ref={stageRef}
         className={`relative min-h-[28rem] overflow-hidden rounded-[1.6rem] bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.08),transparent_58%),linear-gradient(180deg,rgba(15,23,42,0.8),rgba(2,6,23,0.96))] sm:min-h-[38rem] ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
@@ -523,14 +498,6 @@ export function SkillGlobe({ skills }: SkillGlobeProps) {
         }}
       >
         <canvas ref={canvasRef} className="block h-full w-full" aria-label="Interactive rotating skills globe" />
-        <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 flex-wrap justify-center gap-2">
-          <span className="rounded-full border border-white/10 bg-slate-950/70 px-3 py-1 text-xs text-slate-300">
-            Drag to rotate
-          </span>
-          <span className="rounded-full border border-white/10 bg-slate-950/70 px-3 py-1 text-xs text-slate-300">
-            Hover to inspect
-          </span>
-        </div>
       </div>
     </section>
   );

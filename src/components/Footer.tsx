@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { BriefcaseBusiness, FolderGit2, Mail } from "lucide-react";
 
 export function Footer() {
@@ -30,6 +31,12 @@ export function Footer() {
           </a>
 
           <div className="flex flex-wrap gap-3 text-sm text-slate-300">
+            <Link
+              href="/resume"
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 transition-colors hover:border-cyan-300/40 hover:bg-white/10"
+            >
+              Resume
+            </Link>
             <a
               href="https://github.com/Lucifer-0427"
               target="_blank"

@@ -22,12 +22,12 @@ export function HeroArtwork() {
         className="absolute inset-0"
       >
         <Image
-          src="/hero-art.svg"
-          alt="Abstract polygonal side-profile portrait with luminous digital shards"
+          src="/hero-art-final.png"
+          alt="Abstract digital portrait used as the portfolio hero artwork"
           fill
           priority
           sizes="(max-width: 1024px) 100vw, 58vw"
-          className="object-cover object-left-center opacity-[0.97]"
+          className="object-cover object-left-center opacity-[0.98]"
         />
       </motion.div>
 
