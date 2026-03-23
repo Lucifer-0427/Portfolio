@@ -20,9 +20,9 @@ export function Hero() {
         className="absolute right-[18%] top-[16%] h-56 w-56 rounded-full bg-cyan-500/10 blur-3xl"
       />
 
-      <div className="relative min-h-[76vh] overflow-hidden rounded-[2rem] border border-white/6 bg-[linear-gradient(180deg,rgba(5,8,22,0.68),rgba(5,8,22,0.34))] px-3 py-5 sm:px-4 sm:py-6 lg:min-h-[72vh] lg:px-6 lg:py-6">
-        <div className="relative grid items-center gap-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(24rem,0.92fr)] lg:gap-8 xl:grid-cols-[minmax(0,1.14fr)_minmax(26rem,0.86fr)]">
-          <div className="order-2 pr-2 lg:order-1 lg:pr-4">
+      <div className="relative min-h-[72vh] overflow-hidden rounded-[2rem] border border-white/6 bg-[linear-gradient(180deg,rgba(5,8,22,0.68),rgba(5,8,22,0.34))] px-3 py-5 sm:px-4 sm:py-6 lg:min-h-[68vh] lg:px-6 lg:py-6">
+        <div className="relative grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-10">
+          <div className="order-2 lg:order-1">
             <HeroArtwork />
           </div>
 
@@ -30,7 +30,7 @@ export function Hero() {
             initial="hidden"
             animate="show"
             variants={{ hidden: {}, show: { transition: { staggerChildren: 0.12 } } }}
-            className="order-1 flex max-w-[35rem] flex-col justify-start self-start pt-3 sm:pt-5 lg:order-2 lg:pt-0"
+            className="order-1 flex max-w-[35rem] flex-col justify-start self-start pt-3 sm:pt-5 lg:order-2 lg:pl-2 lg:pt-0 xl:pl-6"
           >
             <motion.p
               variants={fadeUp}
