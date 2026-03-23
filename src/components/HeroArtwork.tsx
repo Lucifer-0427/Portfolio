@@ -1,24 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const nodes = [
-  { top: "14%", left: "18%", size: 9, delay: 0 },
-  { top: "22%", left: "31%", size: 12, delay: 0.08 },
-  { top: "28%", left: "55%", size: 10, delay: 0.15 },
-  { top: "35%", left: "68%", size: 13, delay: 0.05 },
-  { top: "47%", left: "45%", size: 11, delay: 0.2 },
-  { top: "58%", left: "22%", size: 8, delay: 0.12 },
-  { top: "67%", left: "63%", size: 10, delay: 0.18 },
-  { top: "79%", left: "36%", size: 9, delay: 0.24 },
+const particles = [
+  { top: "9%", left: "14%", size: 8, delay: 0 },
+  { top: "14%", left: "28%", size: 10, delay: 0.08 },
+  { top: "24%", left: "12%", size: 6, delay: 0.14 },
+  { top: "32%", left: "58%", size: 11, delay: 0.18 },
+  { top: "41%", left: "70%", size: 7, delay: 0.06 },
+  { top: "55%", left: "20%", size: 9, delay: 0.22 },
+  { top: "68%", left: "10%", size: 7, delay: 0.16 },
+  { top: "76%", left: "58%", size: 8, delay: 0.28 },
+  { top: "83%", left: "37%", size: 6, delay: 0.12 },
 ];
 
-const beams = [
-  "left-[8%] top-[22%] w-48 rotate-[18deg]",
-  "left-[22%] top-[38%] w-56 -rotate-[18deg]",
-  "left-[18%] top-[60%] w-44 rotate-[26deg]",
-  "left-[38%] top-[24%] w-52 rotate-[58deg]",
-  "left-[52%] top-[46%] w-40 -rotate-[34deg]",
+const strands = [
+  { className: "left-[0%] top-[70%] w-40 rotate-[16deg]", delay: 0.1 },
+  { className: "left-[6%] top-[28%] w-56 rotate-[22deg]", delay: 0.2 },
+  { className: "left-[16%] top-[52%] w-64 -rotate-[10deg]", delay: 0.28 },
+  { className: "left-[28%] top-[20%] w-44 rotate-[68deg]", delay: 0.05 },
+  { className: "left-[52%] top-[52%] w-48 -rotate-[28deg]", delay: 0.18 },
+  { className: "left-[62%] top-[78%] w-36 rotate-[12deg]", delay: 0.24 },
 ];
 
 export function HeroArtwork() {
@@ -27,31 +28,31 @@ export function HeroArtwork() {
       initial={{ opacity: 0, scale: 0.96, y: 20 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className="relative isolate min-h-[21rem] overflow-hidden rounded-[2.2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.86),rgba(2,6,23,0.92))] p-2 shadow-[0_28px_80px_rgba(2,6,23,0.42)] sm:min-h-[24rem] lg:min-h-[30rem]"
+      className="relative isolate min-h-[20rem] overflow-hidden sm:min-h-[24rem] lg:min-h-[33rem]"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_26%_34%,rgba(34,211,238,0.18),transparent_18rem),radial-gradient(circle_at_58%_48%,rgba(251,146,60,0.14),transparent_16rem),radial-gradient(circle_at_44%_20%,rgba(139,92,246,0.14),transparent_15rem)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_55%)]" />
-      <div className="absolute inset-[1.1rem] rounded-[1.5rem] border border-white/6 bg-[linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0))]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_38%,rgba(34,211,238,0.22),transparent_18rem),radial-gradient(circle_at_58%_58%,rgba(251,146,60,0.18),transparent_16rem),radial-gradient(circle_at_46%_18%,rgba(139,92,246,0.16),transparent_16rem)]" />
+      <div className="absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03),transparent_60%)]" />
 
       <motion.div
         animate={{ y: [0, -4, 0] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         className="relative h-full min-h-[inherit]"
       >
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.08)_1px,transparent_1px)] bg-[size:42px_42px] opacity-28" />
-        <div className="absolute bottom-[10%] right-[-6%] h-[28%] w-[48%] rounded-full bg-cyan-400/10 blur-3xl" />
-        <div className="absolute top-[8%] left-[6%] h-[20%] w-[22%] rounded-full bg-violet-500/10 blur-3xl" />
+        <div className="absolute inset-y-0 left-[6%] w-[72%] rounded-[2.2rem] bg-[linear-gradient(90deg,rgba(7,14,32,0.62),rgba(7,14,32,0.04))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.05)_1px,transparent_1px)] bg-[size:44px_44px] opacity-18" />
+        <div className="absolute bottom-[8%] right-[-4%] h-[34%] w-[42%] rounded-full bg-cyan-400/8 blur-3xl" />
+        <div className="absolute top-[10%] left-[2%] h-[26%] w-[26%] rounded-full bg-violet-500/8 blur-3xl" />
 
-        {beams.map((beam) => (
+        {strands.map((strand) => (
           <motion.div
-            key={beam}
+            key={strand.className}
             animate={{ opacity: [0.15, 0.48, 0.2] }}
-            transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
-            className={`absolute h-px bg-gradient-to-r from-transparent via-cyan-200/80 to-transparent ${beam}`}
+            transition={{ duration: 6.5, delay: strand.delay, repeat: Infinity, ease: "easeInOut" }}
+            className={`absolute h-px bg-gradient-to-r from-transparent via-cyan-200/80 to-transparent ${strand.className}`}
           />
         ))}
 
-        {nodes.map((node) => (
+        {particles.map((node) => (
           <motion.span
             key={`${node.top}-${node.left}`}
             initial={{ opacity: 0, scale: 0.6 }}
@@ -68,7 +69,7 @@ export function HeroArtwork() {
           />
         ))}
 
-        <svg viewBox="0 0 700 780" className="absolute inset-0 h-full w-full" aria-hidden="true">
+        <svg viewBox="0 0 760 860" className="absolute inset-0 h-full w-full" aria-hidden="true">
           <defs>
             <linearGradient id="meshFill" x1="10%" y1="5%" x2="90%" y2="85%">
               <stop offset="0%" stopColor="rgba(125,211,252,0.95)" />
@@ -92,73 +93,73 @@ export function HeroArtwork() {
 
           <g filter="url(#meshGlow)" opacity="0.92">
             <path
-              d="M162 172L232 134L326 128L405 156L456 219L493 278L514 358L503 436L468 506L432 558L397 630L330 687L255 678L196 622L166 548L127 502L106 423L115 340L136 254Z"
+              d="M122 194L198 152L306 138L402 172L470 238L520 314L546 400L532 488L486 570L450 632L405 714L330 778L244 766L178 694L136 612L102 546L78 460L84 362L96 282Z"
               fill="url(#meshFill)"
-              fillOpacity="0.2"
+              fillOpacity="0.16"
               stroke="url(#meshStroke)"
               strokeWidth="1.4"
             />
             <path
-              d="M282 164L339 168L401 212L441 268L452 324L435 382L408 421L373 449L340 470L322 518L291 538L243 536L219 495L206 429L210 370L221 310L246 258L266 210Z"
+              d="M258 182L338 180L408 226L458 294L474 360L454 434L420 486L382 528L346 560L324 618L286 646L230 644L194 584L180 500L186 418L202 340L230 274Z"
               fill="rgba(255,255,255,0.08)"
               stroke="rgba(255,255,255,0.16)"
               strokeWidth="1.2"
             />
             <path
-              d="M398 214L462 258L500 316L511 371L496 430L450 472L404 491L374 508L345 508L334 487L349 452L390 424L428 395L443 356L429 312L397 276L368 236Z"
+              d="M396 236L474 290L526 360L542 432L520 500L468 548L412 570L374 596L338 594L324 566L348 514L402 474L444 432L462 382L446 326L408 278L372 240Z"
               fill="rgba(251,146,60,0.18)"
               stroke="rgba(255,255,255,0.16)"
               strokeWidth="1.15"
             />
             <path
-              d="M268 220L324 196L387 208L422 242L440 296L432 336L409 369L367 395L324 412L276 404L247 374L238 328L245 279Z"
+              d="M252 246L324 212L396 228L438 270L462 338L448 390L420 434L374 470L320 492L264 484L224 444L208 380L216 312Z"
               fill="rgba(125,211,252,0.14)"
               stroke="rgba(255,255,255,0.14)"
               strokeWidth="1.1"
             />
 
             {[
-              [162, 172, 232, 134],
-              [232, 134, 326, 128],
-              [326, 128, 405, 156],
-              [405, 156, 456, 219],
-              [456, 219, 493, 278],
-              [493, 278, 514, 358],
-              [514, 358, 503, 436],
-              [503, 436, 468, 506],
-              [468, 506, 432, 558],
-              [432, 558, 397, 630],
-              [397, 630, 330, 687],
-              [330, 687, 255, 678],
-              [255, 678, 196, 622],
-              [196, 622, 166, 548],
-              [166, 548, 127, 502],
-              [127, 502, 106, 423],
-              [106, 423, 115, 340],
-              [115, 340, 136, 254],
-              [136, 254, 162, 172],
-              [232, 134, 266, 210],
-              [266, 210, 324, 196],
-              [324, 196, 398, 214],
-              [398, 214, 462, 258],
-              [462, 258, 500, 316],
-              [500, 316, 511, 371],
-              [511, 371, 496, 430],
-              [496, 430, 450, 472],
-              [450, 472, 404, 491],
-              [404, 491, 373, 449],
-              [373, 449, 324, 412],
-              [324, 412, 276, 404],
-              [276, 404, 247, 374],
-              [247, 374, 238, 328],
-              [238, 328, 245, 279],
-              [245, 279, 268, 220],
-              [210, 370, 278, 404],
-              [221, 310, 324, 412],
-              [206, 429, 243, 536],
-              [243, 536, 291, 538],
-              [291, 538, 345, 508],
-              [345, 508, 404, 491],
+              [122, 194, 198, 152],
+              [198, 152, 306, 138],
+              [306, 138, 402, 172],
+              [402, 172, 470, 238],
+              [470, 238, 520, 314],
+              [520, 314, 546, 400],
+              [546, 400, 532, 488],
+              [532, 488, 486, 570],
+              [486, 570, 450, 632],
+              [450, 632, 405, 714],
+              [405, 714, 330, 778],
+              [330, 778, 244, 766],
+              [244, 766, 178, 694],
+              [178, 694, 136, 612],
+              [136, 612, 102, 546],
+              [102, 546, 78, 460],
+              [78, 460, 84, 362],
+              [84, 362, 96, 282],
+              [96, 282, 122, 194],
+              [198, 152, 230, 274],
+              [230, 274, 324, 212],
+              [324, 212, 396, 236],
+              [396, 236, 474, 290],
+              [474, 290, 526, 360],
+              [526, 360, 542, 432],
+              [542, 432, 520, 500],
+              [520, 500, 468, 548],
+              [468, 548, 412, 570],
+              [412, 570, 382, 528],
+              [382, 528, 320, 492],
+              [320, 492, 264, 484],
+              [264, 484, 224, 444],
+              [224, 444, 208, 380],
+              [208, 380, 216, 312],
+              [216, 312, 252, 246],
+              [186, 418, 264, 484],
+              [202, 340, 320, 492],
+              [180, 500, 230, 644],
+              [230, 644, 286, 646],
+              [286, 646, 338, 594],
+              [338, 594, 412, 570],
             ].map((line, index) => (
               <line
                 key={index}
@@ -172,40 +173,40 @@ export function HeroArtwork() {
             ))}
 
             {[
-              [162, 172],
-              [232, 134],
-              [326, 128],
-              [405, 156],
-              [456, 219],
-              [493, 278],
-              [514, 358],
-              [503, 436],
-              [468, 506],
-              [432, 558],
-              [397, 630],
-              [330, 687],
-              [255, 678],
-              [196, 622],
-              [166, 548],
-              [127, 502],
-              [106, 423],
-              [115, 340],
-              [136, 254],
-              [266, 210],
-              [324, 196],
-              [398, 214],
-              [462, 258],
-              [500, 316],
-              [511, 371],
-              [496, 430],
-              [450, 472],
-              [404, 491],
-              [373, 449],
-              [324, 412],
-              [276, 404],
-              [247, 374],
-              [238, 328],
-              [245, 279],
+              [122, 194],
+              [198, 152],
+              [306, 138],
+              [402, 172],
+              [470, 238],
+              [520, 314],
+              [546, 400],
+              [532, 488],
+              [486, 570],
+              [450, 632],
+              [405, 714],
+              [330, 778],
+              [244, 766],
+              [178, 694],
+              [136, 612],
+              [102, 546],
+              [78, 460],
+              [84, 362],
+              [96, 282],
+              [230, 274],
+              [324, 212],
+              [396, 236],
+              [474, 290],
+              [526, 360],
+              [542, 432],
+              [520, 500],
+              [468, 548],
+              [412, 570],
+              [382, 528],
+              [320, 492],
+              [264, 484],
+              [224, 444],
+              [208, 380],
+              [216, 312],
             ].map((point, index) => (
               <circle
                 key={index}
@@ -213,6 +214,51 @@ export function HeroArtwork() {
                 cy={point[1]}
                 r={index % 4 === 0 ? 5 : 3}
                 fill={index % 3 === 0 ? "rgba(125,211,252,0.95)" : "rgba(255,244,214,0.88)"}
+              />
+            ))}
+          </g>
+
+          <g opacity="0.34">
+            {[
+              [468, 620, 744, 702],
+              [516, 570, 732, 640],
+              [560, 520, 712, 594],
+              [606, 484, 734, 540],
+              [636, 618, 756, 664],
+              [560, 666, 736, 730],
+              [614, 732, 758, 786],
+            ].map((line, index) => (
+              <line
+                key={`network-${index}`}
+                x1={line[0]}
+                y1={line[1]}
+                x2={line[2]}
+                y2={line[3]}
+                stroke="rgba(125,211,252,0.28)"
+                strokeWidth="1"
+              />
+            ))}
+            {[
+              [468, 620],
+              [516, 570],
+              [560, 520],
+              [606, 484],
+              [636, 618],
+              [560, 666],
+              [614, 732],
+              [744, 702],
+              [732, 640],
+              [712, 594],
+              [734, 540],
+              [736, 730],
+              [758, 786],
+            ].map((point, index) => (
+              <circle
+                key={`network-node-${index}`}
+                cx={point[0]}
+                cy={point[1]}
+                r={index % 3 === 0 ? 5 : 3.6}
+                fill={index % 2 === 0 ? "rgba(255,244,214,0.9)" : "rgba(125,211,252,0.92)"}
               />
             ))}
           </g>
