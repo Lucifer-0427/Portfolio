@@ -13,9 +13,9 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Harsh Panchal | IT Support and Developer Portfolio",
+  title: "Harsh Panchal | Full-Stack Developer Portfolio",
   description:
-    "Portfolio of Harsh Panchal featuring IT support-focused software projects, technical skills, and contact information.",
+    "Premium developer portfolio for Harsh Panchal featuring full-stack project work, frontend and backend capability, and technically credible case studies.",
 };
 
 export default function RootLayout({
@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${manrope.variable} ${syne.variable}`}>{children}</body>
+      <body className={`${manrope.variable} ${syne.variable} antialiased`}>{children}</body>
     </html>
   );
 }

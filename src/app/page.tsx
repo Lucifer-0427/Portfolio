@@ -1,256 +1,125 @@
-import Link from "next/link";
-import type { CSSProperties } from "react";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
-import { SkillsUniverse } from "@/components/skills-universe";
-import {
-  emailAddress,
-  focusAreas,
-  githubUrl,
-  linkedInUrl,
-  projects,
-  skillsUniverse,
-} from "@/lib/site-data";
+import { Code2, Network, Server } from "lucide-react";
+import { FeaturedProjects } from "@/components/FeaturedProjects";
+import { Footer } from "@/components/Footer";
+import { Hero } from "@/components/Hero";
+import { Navbar } from "@/components/Navbar";
+import { SectionHeading } from "@/components/SectionHeading";
 
-export default function Home() {
-  const featuredProject = projects[0];
+const capabilityGroups = [
+  {
+    title: "Frontend",
+    summary:
+      "Responsive interfaces with strong hierarchy, reusable components, polished interactions, and clean user flows.",
+    icon: Code2,
+    items: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "Component architecture"],
+  },
+  {
+    title: "Backend",
+    summary:
+      "API design, authentication, stateful workflow logic, data persistence, and services that support real use cases.",
+    icon: Server,
+    items: ["Node.js", "Express", "REST APIs", "MongoDB", "Operational business logic"],
+  },
+  {
+    title: "Networking",
+    summary:
+      "Infrastructure awareness, monitoring-oriented thinking, troubleshooting habits, and network-aware app design.",
+    icon: Network,
+    items: ["TCP/IP fundamentals", "Connectivity debugging", "Monitoring concepts", "System awareness", "Troubleshooting mindset"],
+  },
+];
 
+export default function HomePage() {
   return (
-    <>
-      <SiteHeader active="home" />
+    <div className="min-h-screen bg-[#050816] text-white">
+      <Navbar />
 
-      <main className="page-shell page-stack">
-        <section className="home-hero">
-          <div className="home-hero__copy">
-            <span className="eyebrow">Available for opportunities</span>
-            <h1>Building practical systems with clear logic and stronger product polish.</h1>
-            <p className="home-hero__role">
-              Software Developer / IT Support / Full Stack Learner
-            </p>
-            <p className="home-hero__lede">
-              I design projects that feel believable, useful, and well thought out. My work
-              sits at the intersection of workflow logic, interface clarity, and the kind of
-              detail that makes software easier to trust.
-            </p>
+      <main className="mx-auto flex w-full max-w-7xl flex-col gap-20 px-4 pb-16 pt-8 sm:px-6 lg:px-8 lg:gap-24 lg:pt-10">
+        <Hero />
 
-            <div className="action-row">
-              <Link href="/projects" className="button button--primary">
-                View Projects
-              </Link>
-              <Link href="/resume" className="button button--secondary">
-                View Resume
-              </Link>
-              <a href="#contact" className="button button--ghost">
-                Contact Me
-              </a>
-            </div>
-          </div>
+        <section id="about" className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
+          <SectionHeading
+            eyebrow="About"
+            title="Full-stack thinking with real operational awareness."
+            description="I’m most interested in building complete systems. That means frontend work that feels intentional, backend logic that behaves reliably, and the kind of technical judgment that comes from understanding how the whole stack fits together."
+          />
 
-          <aside className="hero-architecture">
-            <div className="hero-architecture__grid" />
-            <div className="hero-architecture__frame">
-              <div className="hero-architecture__ring hero-architecture__ring--one" />
-              <div className="hero-architecture__ring hero-architecture__ring--two" />
-              <div className="hero-architecture__core">
-                <span className="hero-architecture__label">Intentional systems</span>
-                <strong>Design + Logic</strong>
-                <p>Projects shaped by believable workflows, not just screens.</p>
-              </div>
-            </div>
-
-            <div className="hero-metrics">
-              <article className="metric-card">
-                <span>Flagship build</span>
-                <strong>IntelliGrocer</strong>
-                <p>Three-role retail platform with live pricing workflows.</p>
-              </article>
-              <article className="metric-card">
-                <span>Current strength</span>
-                <strong>Operational UX</strong>
-                <p>Interfaces designed around how people actually work.</p>
-              </article>
-            </div>
-          </aside>
-        </section>
-
-        <section className="editorial-section editorial-section--soft" id="about">
-          <div className="section-heading">
-            <span className="section-kicker">About</span>
-            <h2>Building with intent.</h2>
-          </div>
-
-          <div className="about-grid">
-            <div className="about-copy">
-              <p>
-                My background in technical support taught me to respect the gap between what
-                a system does and how easily a person can actually use it. That perspective
-                carries into every build I make.
-              </p>
-              <p>
-                I like software that solves real friction: cleaner workflows, more believable
-                business logic, and interfaces that feel polished instead of improvised.
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300">Approach</p>
+              <p className="mt-4 text-sm leading-7 text-slate-300">
+                I like products that feel believable. Good software should not just look modern, it
+                should reflect how real users, workflows, and systems actually behave.
               </p>
             </div>
-
-            <div className="value-grid">
-              <article className="value-card">
-                <span>01</span>
-                <h3>Workflow thinking</h3>
-                <p>Designing around real states, approvals, roles, and operational context.</p>
-              </article>
-              <article className="value-card">
-                <span>02</span>
-                <h3>Calm interfaces</h3>
-                <p>Turning busy functionality into layouts that feel clear and recruiter-ready.</p>
-              </article>
-              <article className="value-card">
-                <span>03</span>
-                <h3>Iterative debugging</h3>
-                <p>Improving the product by tracing real issues, not stopping at surface fixes.</p>
-              </article>
+            <div className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-violet-300">Focus</p>
+              <p className="mt-4 text-sm leading-7 text-slate-300">
+                My strongest work sits where UI polish, backend coordination, and technical problem
+                solving need to support each other instead of being treated separately.
+              </p>
+            </div>
+            <div className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6 sm:col-span-2">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-orange-200">Current direction</p>
+              <p className="mt-4 text-sm leading-7 text-slate-300">
+                I’m building public work gradually and only showcasing projects that are actually on
+                GitHub. That keeps the portfolio honest and lets every case study carry real technical weight.
+              </p>
             </div>
           </div>
         </section>
 
-        <section className="editorial-section">
-          <div className="section-heading">
-            <span className="section-kicker">Skills</span>
-            <h2>Technical arsenal.</h2>
-            <p>
-              The globe stays because it shows the range of tools I work with while still
-              feeling interactive and memorable.
-            </p>
-          </div>
+        <FeaturedProjects />
 
-          <div className="skills-layout">
-            <div className="skills-copy">
-              <div className="skills-copy__card">
-                <span className="section-kicker">Focus</span>
-                <h3>Frontend, backend, and systems that need to work together cleanly.</h3>
-                <ul className="plain-list">
-                  {focusAreas.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+        <section className="space-y-10">
+          <SectionHeading
+            eyebrow="Capabilities"
+            title="Frontend, backend, and networking in one technical profile."
+            description="I don’t want the portfolio to read like I only style interfaces. The real value is being able to move between product experience, backend behavior, and systems thinking without losing coherence."
+          />
 
-            <SkillsUniverse skills={skillsUniverse} />
-          </div>
-        </section>
+          <div className="grid gap-5 lg:grid-cols-3">
+            {capabilityGroups.map((group) => {
+              const Icon = group.icon;
 
-        <section className="editorial-section editorial-section--soft" id="projects">
-          <div className="section-heading">
-            <span className="section-kicker">Featured work</span>
-            <h2>Projects with real operational logic behind them.</h2>
-            <p>
-              I wanted this portfolio to feel less like a gallery of mockups and more like a
-              set of case studies that explain how I think.
-            </p>
-          </div>
-
-          <article
-            className="featured-project"
-            style={{ "--project-accent": featuredProject.accent } as CSSProperties}
-          >
-            <div className="featured-project__copy">
-              <span className="project-pill">{featuredProject.label}</span>
-              <h3>{featuredProject.title}</h3>
-              <p>{featuredProject.summary}</p>
-              <div className="project-meta">
-                <span>{featuredProject.role}</span>
-                <span>{featuredProject.timeline}</span>
-                <span>{featuredProject.category}</span>
-              </div>
-              <ul className="plain-list plain-list--project">
-                {featuredProject.capabilities.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-              <div className="action-row">
-                <Link href={`/projects/${featuredProject.slug}`} className="button button--primary">
-                  Open Case Study
-                </Link>
-                <a
-                  href={featuredProject.repoUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="button button--secondary"
+              return (
+                <article
+                  key={group.title}
+                  className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/20"
                 >
-                  GitHub Repo
-                </a>
-              </div>
-            </div>
-
-            <div className="featured-project__visual">
-              <div className="project-visual-card">
-                <span>Retail platform</span>
-                <strong>3 dashboards</strong>
-              </div>
-              <div className="project-visual-card">
-                <span>Core stack</span>
-                <strong>{featuredProject.stack}</strong>
-              </div>
-              <div className="project-visual-card project-visual-card--wide">
-                <span>Status</span>
-                <p>{featuredProject.liveStatus}</p>
-              </div>
-            </div>
-          </article>
-
-          <div className="project-showcase">
-            {projects.slice(1).map((project) => (
-              <article
-                key={project.slug}
-                className="project-tile"
-                style={{ "--project-accent": project.accent } as CSSProperties}
-              >
-                <div className="project-tile__head">
-                  <span className="project-pill">{project.label}</span>
-                  <h3>{project.title}</h3>
-                </div>
-                <p>{project.summary}</p>
-                <p className="project-tile__stack">{project.stack}</p>
-                <div className="action-row action-row--compact">
-                  <Link href={`/projects/${project.slug}`} className="text-link">
-                    View Project
-                  </Link>
-                  <a href={project.repoUrl} target="_blank" rel="noreferrer" className="text-link">
-                    GitHub
-                  </a>
-                </div>
-              </article>
-            ))}
+                  <div className="inline-flex rounded-2xl border border-white/10 bg-white/5 p-3 text-cyan-300">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-5 font-display text-2xl font-semibold tracking-[-0.04em] text-white">
+                    {group.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-300">{group.summary}</p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {group.items.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-white/10 bg-slate-900/80 px-3 py-1 text-xs font-medium text-slate-200"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </section>
 
-        <section className="contact-banner" id="contact">
-          <div>
-            <span className="section-kicker">Contact</span>
-            <h2>Let&apos;s build something thoughtful.</h2>
-            <p>
-              I&apos;m looking for opportunities where I can contribute, learn quickly, and keep
-              sharpening both the technical side and the product side of my work.
-            </p>
-          </div>
-
-          <div className="contact-banner__actions">
-            <a href={`mailto:${emailAddress}`} className="button button--primary">
-              Send an Email
-            </a>
-            <div className="contact-links">
-              <a href={linkedInUrl} target="_blank" rel="noreferrer">
-                LinkedIn
-              </a>
-              <a href={githubUrl} target="_blank" rel="noreferrer">
-                GitHub
-              </a>
-            </div>
-          </div>
+        <section id="articles" className="rounded-[2rem] border border-white/10 bg-white/[0.04] px-6 py-8 sm:px-8">
+          <SectionHeading
+            eyebrow="Articles"
+            title="Write-ups will be added as more public projects ship."
+            description="I’m not filling this section with fake thought pieces. As new GitHub-backed projects go live, I’ll add architecture notes, debugging write-ups, and technical breakdowns that reflect real work."
+          />
         </section>
+
+        <Footer />
       </main>
-
-      <SiteFooter />
-    </>
+    </div>
   );
 }

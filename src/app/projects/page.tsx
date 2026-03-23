@@ -1,124 +1,84 @@
-import Link from "next/link";
-import type { CSSProperties } from "react";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
-import { githubUrl, projects } from "@/lib/site-data";
+"use client";
+
+import { useMemo, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Footer } from "@/components/Footer";
+import { Navbar } from "@/components/Navbar";
+import { ProjectCard } from "@/components/ProjectCard";
+import { SectionHeading } from "@/components/SectionHeading";
+import { projectCategories, projects } from "@/data/projects";
 
 export default function ProjectsPage() {
-  const featuredProject = projects[0];
+  const [activeFilter, setActiveFilter] = useState<(typeof projectCategories)[number]>("All");
+
+  const filteredProjects = useMemo(() => {
+    if (activeFilter === "All") {
+      return projects;
+    }
+
+    return projects.filter((project) => project.category === activeFilter);
+  }, [activeFilter]);
 
   return (
-    <>
-      <SiteHeader active="projects" />
+    <div className="min-h-screen bg-[#050816] text-white">
+      <Navbar />
 
-      <main className="page-shell page-stack">
-        <section className="subpage-hero">
-          <span className="eyebrow">Projects</span>
-          <h1>Case studies designed to show how I think, not just what I built.</h1>
-          <p>
-            This page focuses on project quality, system reasoning, and the practical decisions
-            behind each build. The goal is to make the work feel clear, grounded, and recruiter-friendly.
-          </p>
-          <div className="action-row">
-            <Link href="/" className="button button--secondary">
-              Back Home
-            </Link>
-            <Link href="/resume" className="button button--primary">
-              Open Resume
-            </Link>
-          </div>
+      <main className="mx-auto flex w-full max-w-7xl flex-col gap-14 px-4 pb-16 pt-8 sm:px-6 lg:px-8">
+        <section className="rounded-[2rem] border border-white/10 bg-slate-950/70 px-6 py-8 shadow-2xl shadow-black/30 sm:px-8">
+          <SectionHeading
+            eyebrow="Projects"
+            title="Case studies built around real public work."
+            description="This page lists only projects that are actually public on GitHub. As more repositories go live, this grid can grow without changing the design system."
+          />
         </section>
 
-        <section
-          className="project-spotlight"
-          style={{ "--project-accent": featuredProject.accent } as CSSProperties}
-        >
-          <div className="project-spotlight__main">
-            <span className="project-pill">Flagship Project</span>
-            <h2>{featuredProject.title}</h2>
-            <p>{featuredProject.detail}</p>
-            <div className="project-meta">
-              <span>{featuredProject.role}</span>
-              <span>{featuredProject.timeline}</span>
-              <span>{featuredProject.category}</span>
-            </div>
-            <ul className="plain-list plain-list--project">
-              {featuredProject.highlights.map((highlight) => (
-                <li key={highlight}>{highlight}</li>
-              ))}
-            </ul>
-            <div className="action-row">
-              <Link href={`/projects/${featuredProject.slug}`} className="button button--primary">
-                Open Case Study
-              </Link>
-              <a
-                href={featuredProject.repoUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="button button--secondary"
+        <section className="space-y-8">
+          <div className="flex flex-wrap gap-3">
+            {projectCategories.map((category) => (
+              <button
+                key={category}
+                type="button"
+                onClick={() => setActiveFilter(category)}
+                className={[
+                  "rounded-full border px-4 py-2 text-sm font-medium transition-colors",
+                  activeFilter === category
+                    ? "border-cyan-300/40 bg-cyan-400/10 text-cyan-200"
+                    : "border-white/10 bg-white/5 text-slate-300 hover:border-white/20 hover:text-white",
+                ].join(" ")}
               >
-                View on GitHub
-              </a>
-            </div>
+                {category}
+              </button>
+            ))}
           </div>
 
-          <aside className="project-spotlight__side">
-            <div className="meta-panel">
-              <span className="section-kicker">Status</span>
-              <p>{featuredProject.liveStatus}</p>
-            </div>
-            <div className="meta-panel">
-              <span className="section-kicker">Core capability</span>
-              <strong>{featuredProject.capabilities[0]}</strong>
-            </div>
-          </aside>
-        </section>
-
-        <section className="project-catalog">
-          {projects.slice(1).map((project) => (
-            <article
-              key={project.slug}
-              className="project-catalog__item"
-              style={{ "--project-accent": project.accent } as CSSProperties}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeFilter}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+              className="grid gap-6"
             >
-              <div>
-                <span className="project-pill">{project.label}</span>
-                <h3>{project.title}</h3>
-              </div>
-              <p>{project.summary}</p>
-              <p className="project-catalog__stack">{project.stack}</p>
-              <div className="project-meta">
-                <span>{project.role}</span>
-                <span>{project.category}</span>
-              </div>
-              <div className="action-row action-row--compact">
-                <Link href={`/projects/${project.slug}`} className="text-link">
-                  View Case Study
-                </Link>
-                <a href={project.repoUrl} target="_blank" rel="noreferrer" className="text-link">
-                  GitHub
-                </a>
-              </div>
-            </article>
-          ))}
+              {filteredProjects.length > 0 ? (
+                filteredProjects.map((project) => <ProjectCard key={project.slug} project={project} />)
+              ) : (
+                <div className="rounded-[1.75rem] border border-dashed border-white/15 bg-white/[0.03] p-8 text-center">
+                  <p className="font-display text-2xl font-semibold tracking-[-0.04em] text-white">
+                    More public work is coming.
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-slate-300">
+                    I’m keeping the portfolio honest, so categories without a public GitHub-backed
+                    project stay empty until there is real work to show.
+                  </p>
+                </div>
+              )}
+            </motion.div>
+          </AnimatePresence>
         </section>
 
-        <section className="repository-note">
-          <div>
-            <span className="section-kicker">Repositories</span>
-            <h2>Every project can point directly to source once each repo is public.</h2>
-            <p>
-              IntelliGrocer already links to its own repository. The other cards can stay connected
-              to your main profile until you decide to publish each project separately.
-            </p>
-          </div>
-          <a href={githubUrl} target="_blank" rel="noreferrer" className="button button--secondary">
-            Open GitHub Profile
-          </a>
-        </section>
+        <Footer />
       </main>
-
-      <SiteFooter />
-    </>
+    </div>
   );
 }
