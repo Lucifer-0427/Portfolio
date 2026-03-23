@@ -168,64 +168,6 @@ export const projects: Project[] = [
     accent: "#506076",
     repoUrl: githubUrl,
   },
-  {
-    slug: "supermarket-website-dynamic-pricing",
-    title: "Supermarket Website with Dynamic Pricing",
-    label: "Business Logic",
-    summary:
-      "A retail-focused website that adapts product pricing through business rules, showing practical problem solving beyond static web pages.",
-    stack: "JavaScript, HTML, CSS, web logic design",
-    highlights: [
-      "Focused on conditional pricing behavior and product management scenarios.",
-      "Strengthened full-stack thinking, testing habits, and logic design under real-world style constraints.",
-    ],
-    liveStatus: "Project summary available for portfolio review.",
-    detail:
-      "This project focuses on conditional logic and pricing behavior rather than just presentation. It shows how product pricing can change based on rules and scenarios, which makes it a good example of business-focused web development. The project highlights reasoning, testing, and building interfaces that respond to underlying logic.",
-    role: "Logic and frontend implementation",
-    timeline: "2025",
-    category: "Retail pricing prototype",
-    challenge:
-      "The core challenge was making price changes feel intentional instead of random. The logic had to reflect stock pressure, demand, and product conditions in a way that made business sense.",
-    learning:
-      "This project taught me how much stronger a product becomes when interface decisions are backed by clear business rules and testable scenarios.",
-    capabilities: [
-      "Conditional pricing behavior driven by product and stock scenarios",
-      "Retail-facing interface thinking tied to backend-style logic decisions",
-      "Business-rule experimentation focused on practical supermarket use cases",
-    ],
-    accent: "#625b77",
-    repoUrl: githubUrl,
-  },
-  {
-    slug: "space-fighter-game",
-    title: "Space Fighter Game",
-    label: "Programming Depth",
-    summary:
-      "A fast-paced C# game project that demonstrates event-driven programming, gameplay systems, and iterative debugging.",
-    stack: "C#, MonoGame, collision systems, gameplay loops",
-    highlights: [
-      "Implemented movement, enemy behavior, collision handling, and score tracking.",
-      "Used repeated testing and debugging to improve responsiveness, logic, and game feel.",
-    ],
-    liveStatus: "Desktop-style project highlighted through portfolio case study.",
-    detail:
-      "The space fighter game is a programming-focused project built to sharpen logic, systems design, and debugging. It brings together movement, collisions, enemy patterns, and scoring into a complete gameplay loop. It also shows comfort with iteration, because game feel improves through repeated tuning and fixes.",
-    role: "Gameplay programmer",
-    timeline: "2025",
-    category: "Game systems project",
-    challenge:
-      "The project required repeated tuning to make the gameplay loop feel responsive instead of stiff. Collision logic, enemy timing, and scoring all needed iteration before the system felt good to play.",
-    learning:
-      "It improved my debugging discipline and showed me how interaction-heavy software gets better through tight feedback loops and repeated refinement.",
-    capabilities: [
-      "Gameplay loop implementation with movement, enemies, and scoring",
-      "Collision handling and event-driven system logic",
-      "Iterative testing focused on responsiveness and player feedback",
-    ],
-    accent: "#2747b6",
-    repoUrl: githubUrl,
-  },
 ];
 
 export const targets = [
